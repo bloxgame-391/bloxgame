@@ -12,14 +12,13 @@ body{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10131a;--card:#181c26;--text:#eef0f6;--muted:#a3aabd;--line:#272c3a;--accent2:#6b97ff;color-scheme:dark}}
 :root[data-theme="dark"]{--bg:#10131a;--card:#181c26;--text:#eef0f6;--muted:#a3aabd;--line:#272c3a;--accent2:#6b97ff;color-scheme:dark}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
-*{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 'Baloo 2',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 .cubes{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .cubes i{position:absolute;width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent2),#8db6ff);opacity:.4;animation:float 9s ease-in-out infinite;box-shadow:0 8px 16px rgba(43,109,246,.3)}
 .cubes i:nth-child(odd){background:linear-gradient(135deg,var(--accent),#ff8a7d);animation-duration:12s;box-shadow:0 8px 16px rgba(226,35,26,.3)}
 @keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-28px) rotate(20deg)}}
 nav,main,header,footer,section{position:relative;z-index:1}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:10px;background:var(--card);border-bottom:1px solid var(--line)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:2px;justify-content:space-between;flex-wrap:nowrap;padding:8px 6px;overflow-x:auto;background:var(--card);border-bottom:1px solid var(--line)}
 nav a{color:var(--text);text-decoration:none;padding:6px 12px;border-radius:999px;font-weight:600;font-size:14px}
 nav a:hover{background:var(--bg)}
 header{text-align:center;padding:56px 20px 40px;position:relative}
@@ -27,14 +26,28 @@ header{text-align:center;padding:56px 20px 40px;position:relative}
 .subbtn svg{width:20px;height:20px;flex:none}
 .subfull{position:fixed;inset:0;z-index:30;background:#0f0f0f;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:20px;animation:fadein .2s ease}
 .subfull[hidden]{display:none}
+.speedctrl{position:absolute;top:14px;left:14px;text-align:left}
+.speedlabel{font-size:11px;font-weight:600;color:rgba(255,255,255,.2);cursor:pointer;display:flex;align-items:center;gap:6px;user-select:none}
+.speedlabel span{color:rgba(255,255,255,.2)}
+.speedmenu{margin-top:6px;background:#1e1e1e;border:1px solid rgba(255,255,255,.15);border-radius:12px;overflow:hidden;display:none}
+.speedmenu.open{display:block}
+.speedmenu button{display:block;width:100%;padding:10px 16px;background:none;border:0;color:#fff;font-size:13px;text-align:left;cursor:pointer;white-space:nowrap}
+.speedmenu button:hover{background:rgba(255,255,255,.1)}
+.speedmenu button.sel{color:#6b97ff;font-weight:700}
+.speedcustom{display:none;padding:8px 12px;background:#1e1e1e;border-top:1px solid rgba(255,255,255,.1)}
+.speedcustom.open{display:flex;align-items:center;gap:8px}
+.speedcustom input{width:70px;padding:6px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#2a2a2a;color:#fff;font-size:13px}
+.speedcustom span{font-size:12px;color:rgba(255,255,255,.5)}
 .subfull svg{width:84px;height:84px}
 .subfull h2{margin:0;font-size:clamp(38px,10vw,64px);letter-spacing:-1px}
 .subfull .h{margin:0;font-size:clamp(18px,4.2vw,26px);color:#aaa}
 .subfull .n{margin:8px 0 0;font-size:clamp(54px,15vw,110px);font-weight:800;font-variant-numeric:tabular-nums}
 .subfull .lab{margin:0;font-size:18px;color:#aaa;text-transform:uppercase;letter-spacing:1px}
 #subclose{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.12);border:0;color:#fff;width:40px;height:40px;border-radius:50%;font-size:24px;cursor:pointer;line-height:1}
+
 .cube-wrap{display:inline-block;overflow:hidden;vertical-align:baseline}
-.cube-inner{display:flex;flex-direction:column;transition:transform .4s cubic-bezier(.4,0,.2,1)}
+:root{--cube-dur:400ms}
+.cube-inner{display:flex;flex-direction:column;transition:transform var(--cube-dur) cubic-bezier(.4,0,.2,1)}
 .cube-inner span{display:block}
 @media (prefers-reduced-motion:reduce){.cube-inner{transition:none}}
 @media (orientation:landscape){.subfull{flex-direction:column;gap:14px}.subfull svg{width:64px;height:64px}.subfull h2{font-size:clamp(28px,6vw,48px)}.subfull .h{font-size:clamp(14px,3vw,22px)}.subfull .n{font-size:clamp(44px,12vw,90px);margin-top:0}.subfull .lab{font-size:16px}}
@@ -52,7 +65,6 @@ h2{margin:0 0 14px;font-size:26px}
 .tl li::before{content:"";position:absolute;left:-26px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--accent2)}
 .tl b{color:var(--accent2)}
 .kofi-prev{display:flex;gap:12px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px;margin:0 0 16px}
-.kofi-prev img{width:52px;height:52px;border-radius:50%;flex:none}
 .kofi-icon{width:52px;height:52px;border-radius:14px;background:#13c3ff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;flex:none}
 .kofi-prev b{display:block}
 .safe{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px;margin-top:10px}
@@ -60,7 +72,6 @@ h2{margin:0 0 14px;font-size:26px}
 .box{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 12px}
 .box b{color:var(--accent)}
 h3{margin:24px 0 10px;font-size:20px}
-.socials{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .btn.wa{background:#1fa855}
 .lbl{font-weight:700;margin:0 0 10px!important;color:var(--text)!important}
 .view{display:none}
@@ -74,7 +85,6 @@ h3{margin:24px 0 10px;font-size:20px}
 @media (prefers-reduced-motion:reduce){.view.on{animation:none}}
 nav a.act{background:var(--bg);color:var(--accent)}
 *{-webkit-tap-highlight-color:transparent}
-nav{flex-wrap:nowrap;justify-content:space-between;gap:2px;padding:8px 6px;overflow-x:auto}
 nav a{white-space:nowrap;padding:6px 9px;font-size:13px}
 .soc .row{display:flex;align-items:center;justify-content:center;gap:16px;margin:0 0 14px;flex-wrap:nowrap}
 .soc .btn,.soc a.info{flex:1;max-width:230px;text-align:center;min-width:0}
@@ -102,27 +112,9 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:10px 20px 30p
 .tbox p{margin:0;color:var(--muted);line-height:1.6}
 .tclose{position:sticky;top:0;float:right;background:var(--bg);border:0;color:var(--text);font-size:14px;font-weight:300;cursor:pointer;line-height:1;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:-2px -2px 8px 8px;flex:none}
 </style>
-<script>
-function googleTranslateElementInit(){
-  var lang=(navigator.language||navigator.userLanguage||"it").split("-")[0];
-  if(lang!=="it"){
-    new google.translate.TranslateElement({
-      pageLanguage:"it",
-      includedLanguages:lang,
-      autoDisplay:false,
-      layout:google.translate.TranslateElement.InlineLayout.SIMPLE
-    },"gt");
-    setTimeout(function(){
-      var sel=document.querySelector(".goog-te-combo");
-      if(sel){sel.value=lang;sel.dispatchEvent(new Event("change"));}
-    },800);
-  }
-}
-</script>
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </head>
 <body>
-<div id="gt" style="display:none"></div>
 <div class="cubes" aria-hidden="true"><i style="top:8%;left:6%"></i><i style="top:20%;left:85%"></i><i style="top:55%;left:12%"></i><i style="top:70%;left:78%"></i><i style="top:35%;left:45%"></i><i style="top:85%;left:30%"></i></div>
 <nav><a href="#home">BloxGame</a><a href="#roblox">Storia di Roblox</a><a href="#social">Social</a></nav>
 
@@ -220,7 +212,27 @@ DONA END -->
 </div>
 
 <div class="subfull" id="subfull" hidden>
+<div class="speedctrl" id="speedctrl">
+<div class="speedlabel" id="speedlabel"><span id="speedname">Medio</span></div>
+<div class="speedmenu" id="speedmenu">
+<button data-ms="800" class="speedopt">🐢 Piano</button>
+<button data-ms="400" class="speedopt sel">⚡ Medio</button>
+<button data-ms="150" class="speedopt">🚀 Veloce</button>
+<button data-ms="custom" class="speedopt">✏️ Personalizzato</button>
+</div>
+<div class="speedcustom" id="speedcustom">
+<input type="number" id="speedinput" min="50" max="5000" value="400" placeholder="ms">
+<span>ms</span>
+<button onclick="applyCustomSpeed()" style="background:#6b97ff;border:0;color:#fff;padding:5px 10px;border-radius:6px;cursor:pointer;font-size:12px">OK</button>
+</div>
+</div>
 <button id="subclose" aria-label="Chiudi">×</button>
+<div class="speeddrop" id="speeddrop" hidden>
+<button data-ms="800" class="speed-opt">🐢 Piano</button>
+<button data-ms="400" class="speed-opt on">⚡ Medio</button>
+<button data-ms="150" class="speed-opt">🚀 Veloce</button>
+<div class="custom-row"><span>✏️</span><input id="customms" type="number" min="50" max="5000" placeholder="ms"><span>ms</span></div>
+</div>
 <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12Z"/></svg>
 <div>
 <h2>BloxGame</h2>
@@ -416,6 +428,89 @@ DONA END -->
   }
   poll();
   setInterval(poll,60000);
+  // Menu velocità animazione
+  var animDuration=400;
+  var speedNames={800:"Piano",400:"Medio",150:"Veloce"};
+  var speedbtn=null;
+  var speeddrop=document.getElementById("speeddrop");
+  var speedlabel=document.getElementById("speedlabel");
+  var customms=document.getElementById("customms");
+
+  if(speedbtn)speedbtn.addEventListener("click",function(e){e.stopPropagation();speeddrop.hidden=!speeddrop.hidden;});
+  document.addEventListener("click",function(){speeddrop.hidden=true;});
+  speeddrop.addEventListener("click",function(e){e.stopPropagation();});
+
+  [].forEach.call(document.querySelectorAll(".speed-opt"),function(b){
+    b.addEventListener("click",function(){
+      animDuration=parseInt(b.dataset.ms);
+      [].forEach.call(document.querySelectorAll(".speed-opt"),function(x){x.classList.remove("on");});
+      b.classList.add("on");
+      speedlabel.textContent=speedNames[animDuration]||animDuration+"ms";
+      customms.value="";
+      speeddrop.hidden=true;
+      // Aggiorna la transizione del cubo
+      document.documentElement.style.setProperty("--cube-dur",animDuration+"ms");
+    });
+  });
+  customms.addEventListener("change",function(){
+    var v=parseInt(customms.value);
+    if(v>=50&&v<=5000){
+      animDuration=v;
+      [].forEach.call(document.querySelectorAll(".speed-opt"),function(x){x.classList.remove("on");});
+      speedlabel.textContent=v+"ms";
+      document.documentElement.style.setProperty("--cube-dur",v+"ms");
+      speeddrop.hidden=true;
+    }
+  });
+
+  // Controllo velocità animazione
+  var speedMenu=document.getElementById("speedmenu");
+  var speedCustom=document.getElementById("speedcustom");
+  var speedName=document.getElementById("speedname");
+  var speedNames={800:"Piano",400:"Medio",150:"Veloce"};
+
+  document.getElementById("speedlabel").addEventListener("click",function(e){
+    e.stopPropagation();
+    speedMenu.classList.toggle("open");
+    speedCustom.classList.remove("open");
+  });
+
+  [].forEach.call(document.querySelectorAll(".speedopt"),function(btn){
+    btn.addEventListener("click",function(e){
+      e.stopPropagation();
+      [].forEach.call(document.querySelectorAll(".speedopt"),function(b){b.classList.remove("sel");});
+      btn.classList.add("sel");
+      var ms=btn.dataset.ms;
+      if(ms==="custom"){
+        speedCustom.classList.add("open");
+        speedName.textContent="";
+        document.getElementById("speedlabel").style.display="none";
+      }else{
+        speedCustom.classList.remove("open");
+        var val=parseInt(ms);
+        document.documentElement.style.setProperty("--cube-dur",val+"ms");
+        speedName.textContent=speedNames[val]||val+"ms";
+        document.getElementById("speedlabel").style.display="flex";
+        speedMenu.classList.remove("open");
+      }
+    });
+  });
+
+  window.applyCustomSpeed=function(){
+    var val=parseInt(document.getElementById("speedinput").value);
+    if(val>=50&&val<=5000){
+      document.documentElement.style.setProperty("--cube-dur",val+"ms");
+      speedName.textContent=val+" ms";
+      document.getElementById("speedlabel").style.display="flex";
+      speedMenu.classList.remove("open");
+      speedCustom.classList.remove("open");
+    }
+  };
+
+  document.addEventListener("click",function(){
+    speedMenu.classList.remove("open");
+  });
+
   document.getElementById("subopen").addEventListener("click",function(){
     sf.hidden=false;
     sfEl.textContent=fmt(ISCRITTI);
