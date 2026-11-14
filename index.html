@@ -167,8 +167,8 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:10px 20px 30p
 <h2>I nostri social</h2>
 <p>Seguici per non perderti i nuovi video e restare sempre aggiornato!</p>
 <div class="soc">
-<div class="row"><a class="btn info" data-name="YouTube" data-desc="Il nostro canale YouTube: @bloxgame-20. Qui trovi tutti i nostri video su Roblox, tra avventure, giochi della community e curiosità. Iscriviti per non perdere i nuovi video!" data-url="https://www.youtube.com/@bloxgame-20" href="javascript:void(0)" role="button">▶ YouTube</a><div class="qr" role="button" tabindex="0" aria-label="Ingrandisci il QR code di YouTube" data-name="YouTube" data-url="https://www.youtube.com/@bloxgame-20"></div></div>
-<div class="row"><a class="btn wa info" data-name="Canale WhatsApp" data-desc="Il nostro canale WhatsApp. Qui pubblichiamo gli aggiornamenti sui nuovi video, le novità del canale e gli annunci, direttamente sul tuo telefono. È un canale a senso unico: noi pubblichiamo e tu leggi e puoi reagire ai messaggi." data-url="https://whatsapp.com/channel/0029Vb7l3YfJZg47366nmT2d" data-app="whatsapp://channel/0029Vb7l3YfJZg47366nmT2d" href="javascript:void(0)" role="button">💬 Canale WhatsApp</a><div class="qr" role="button" tabindex="0" aria-label="Ingrandisci il QR code del canale WhatsApp" data-name="Canale WhatsApp" data-url="https://whatsapp.com/channel/0029Vb7l3YfJZg47366nmT2d"></div></div>
+<div class="row"><a class="btn info" data-name="YouTube" data-desc="Il nostro canale YouTube: @bloxgame-20. Qui trovi tutti i nostri video su Roblox, tra avventure, giochi della community e curiosità. Iscriviti per non perdere i nuovi video!" data-url="https://www.youtube.com/@bloxgame-20" href="https://www.youtube.com/@bloxgame-20" target="_blank" rel="noopener">▶ YouTube</a><div class="qr" role="button" tabindex="0" aria-label="Ingrandisci il QR code di YouTube" data-name="YouTube" data-url="https://www.youtube.com/@bloxgame-20"></div></div>
+<div class="row"><a class="btn wa info" data-name="Canale WhatsApp" data-desc="Il nostro canale WhatsApp. Qui pubblichiamo gli aggiornamenti sui nuovi video, le novità del canale e gli annunci, direttamente sul tuo telefono. È un canale a senso unico: noi pubblichiamo e tu leggi e puoi reagire ai messaggi." data-url="https://whatsapp.com/channel/0029Vb7l3YfJZg47366nmT2d" data-app="whatsapp://channel/0029Vb7l3YfJZg47366nmT2d" href="https://whatsapp.com/channel/0029Vb7l3YfJZg47366nmT2d" target="_blank" rel="noopener">💬 Canale WhatsApp</a><div class="qr" role="button" tabindex="0" aria-label="Ingrandisci il QR code del canale WhatsApp" data-name="Canale WhatsApp" data-url="https://whatsapp.com/channel/0029Vb7l3YfJZg47366nmT2d"></div></div>
 </div>
 <p class="small" style="text-align:center">Tocca un QR code per ingrandirlo.</p>
 </section>
@@ -227,12 +227,6 @@ DONA END -->
 </div>
 </div>
 <button id="subclose" aria-label="Chiudi">×</button>
-<div class="speeddrop" id="speeddrop" hidden>
-<button data-ms="800" class="speed-opt">🐢 Piano</button>
-<button data-ms="400" class="speed-opt on">⚡ Medio</button>
-<button data-ms="150" class="speed-opt">🚀 Veloce</button>
-<div class="custom-row"><span>✏️</span><input id="customms" type="number" min="50" max="5000" placeholder="ms"><span>ms</span></div>
-</div>
 <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12Z"/></svg>
 <div>
 <h2>BloxGame</h2>
@@ -378,11 +372,11 @@ DONA END -->
     var h=parseFloat(getComputedStyle(el).fontSize)||16;
     var oldPad=oldText;
     var newPad=newText;
-    while(oldPad.length<newPad.length)oldPad=" "+oldPad;
-    while(newPad.length<oldPad.length)newPad=" "+newPad;
+    while(oldPad.length<newPad.length)oldPad=" "+oldPad;
+    while(newPad.length<oldPad.length)newPad=" "+newPad;
     for(var i=0;i<newPad.length;i++){
-      var oc=oldPad[i]||" ";
-      var nc=newPad[i]||" ";
+      var oc=oldPad[i]||" ";
+      var nc=newPad[i]||" ";
       var wrap=document.createElement("span");
       wrap.className="cube-wrap";
       wrap.style.height=h+"px";
@@ -437,40 +431,6 @@ DONA END -->
   }
   poll();
   setInterval(poll,60000);
-  // Menu velocità animazione
-  var animDuration=400;
-  var speedNames={800:"Piano",400:"Medio",150:"Veloce"};
-  var speedbtn=null;
-  var speeddrop=document.getElementById("speeddrop");
-  var speedlabel=document.getElementById("speedlabel");
-  var customms=document.getElementById("customms");
-
-  if(speedbtn)speedbtn.addEventListener("click",function(e){e.stopPropagation();speeddrop.hidden=!speeddrop.hidden;});
-  document.addEventListener("click",function(){speeddrop.hidden=true;});
-  speeddrop.addEventListener("click",function(e){e.stopPropagation();});
-
-  [].forEach.call(document.querySelectorAll(".speed-opt"),function(b){
-    b.addEventListener("click",function(){
-      animDuration=parseInt(b.dataset.ms);
-      [].forEach.call(document.querySelectorAll(".speed-opt"),function(x){x.classList.remove("on");});
-      b.classList.add("on");
-      speedlabel.textContent=speedNames[animDuration]||animDuration+"ms";
-      customms.value="";
-      speeddrop.hidden=true;
-      // Aggiorna la transizione del cubo
-      document.documentElement.style.setProperty("--cube-dur",animDuration+"ms");
-    });
-  });
-  customms.addEventListener("change",function(){
-    var v=parseInt(customms.value);
-    if(v>=50&&v<=5000){
-      animDuration=v;
-      [].forEach.call(document.querySelectorAll(".speed-opt"),function(x){x.classList.remove("on");});
-      speedlabel.textContent=v+"ms";
-      document.documentElement.style.setProperty("--cube-dur",v+"ms");
-      speeddrop.hidden=true;
-    }
-  });
 
   // Controllo velocità animazione
   var speedMenu=document.getElementById("speedmenu");
