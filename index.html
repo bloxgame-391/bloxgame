@@ -64,6 +64,15 @@ h2{margin:0 0 14px;font-size:26px}
 .tl li{margin:0 0 18px;position:relative}
 .tl li::before{content:"";position:absolute;left:-26px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--accent2)}
 .tl b{color:var(--accent2)}
+.tl-icon{display:inline-block;margin-right:6px;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.box-ill{display:flex;gap:12px;align-items:center}
+.box-ill .ill{font-size:32px;flex:none;animation:bounce2 2.2s ease-in-out infinite}
+.box-ill .ill.shake{animation:shake 3s ease-in-out infinite}
+.box-ill .ill.glow{animation:glow 2s ease-in-out infinite}
+@keyframes bounce2{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes shake{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+@keyframes glow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.6)}}
 .kofi-prev{display:flex;gap:12px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px;margin:0 0 16px}
 .kofi-icon{width:52px;height:52px;border-radius:14px;background:#13c3ff;color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;flex:none}
 .kofi-prev b{display:block}
@@ -142,24 +151,31 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:10px 20px 30p
 <p>Roblox non è un solo gioco: è una piattaforma dove milioni di persone creano e giocano esperienze fatte dalla community. Ecco chi l’ha inventata e come è cresciuta.</p>
 <h3>La timeline</h3>
 <ul class="tl">
-<li><b>1989</b> – <button class="term" data-t="baszucki">David Baszucki</button> fonda <em>Knowledge Revolution</em>, l’azienda di <em>Interactive Physics</em>, un software di simulazione fisica: l’idea da cui nascerà Roblox.</li>
-<li><b>2004</b> – Baszucki e il socio <button class="term" data-t="cassel">Erik Cassel</button> fondano <button class="term" data-t="dynablocks">DynaBlocks</button>, una piattaforma per simulazioni fisiche in 2D.</li>
-<li><b>2005</b> – Il nome cambia in <em>Roblox</em>.</li>
-<li><b>2006</b> – Il lancio ufficiale: i giocatori possono costruire e condividere i propri mondi.</li>
-<li><b>2007</b> – Arrivano i <button class="term" data-t="robux">Robux</button>, la valuta virtuale della piattaforma.</li>
-<li><b>2012</b> – Roblox arriva anche su smartphone e tablet con l’app per iOS.</li>
-<li><b>2013</b> – Il programma <button class="term" data-t="devex">Developer Exchange</button> permette ai creatori di guadagnare dai propri giochi. Quest’anno scompare <button class="term" data-t="cassel">Erik Cassel</button>, cofondatore di Roblox.</li>
-<li><b>2016</b> – Arrivo su Xbox One e supporto alla realtà virtuale.</li>
-<li><b>2017</b> – Esplodono i giochi della community come <button class="term" data-t="adoptme">Adopt Me!</button> e <button class="term" data-t="jailbreak">Jailbreak</button>.</li>
-<li><b>2020</b> – Durante la pandemia gli utenti crescono in modo enorme, soprattutto tra i più giovani.</li>
-<li><b>2021</b> – Roblox sbarca in borsa a Wall Street.</li>
-<li><b>Oggi</b> – Milioni di esperienze create dalla community, giocabili su PC, console e smartphone. <button class="term" data-t="baszucki">David Baszucki</button> guida ancora l’azienda come CEO.</li>
+<li><b>1989</b> – <span class="tl-icon">🔬</span><button class="term" data-t="baszucki">David Baszucki</button> fonda <em>Knowledge Revolution</em> e crea <em>Interactive Physics</em>, software di simulazione fisica: l'idea da cui nascerà Roblox.</li>
+<li><b>2004</b> – <span class="tl-icon">🧱</span>Baszucki e il socio <button class="term" data-t="cassel">Erik Cassel</button> fondano <button class="term" data-t="dynablocks">DynaBlocks</button>, prima versione di Roblox con fisica e mattoncini virtuali.</li>
+<li><b>2005</b> – <span class="tl-icon">✏️</span>Il nome cambia in <em>Roblox</em>, unendo le parole "robots" e "blocks".</li>
+<li><b>2006</b> – <span class="tl-icon">🚀</span>Lancio ufficiale al pubblico: arrivano Roblox Studio, il sistema degli avatar e i badge.</li>
+<li><b>2007</b> – <span class="tl-icon">💰</span>Arrivano i <button class="term" data-t="robux">Robux</button> e il Builders Club, con vantaggi per i membri.</li>
+<li><b>2011</b> – <span class="tl-icon">🏟️</span>Prima convention in presenza: il ROBLOX Rally a San Francisco, con oltre 1.000 partecipanti.</li>
+<li><b>2012</b> – <span class="tl-icon">📱</span>Roblox arriva su iOS a dicembre, aprendo la piattaforma agli smartphone per la prima volta.</li>
+<li><b>2013</b> – <span class="tl-icon">💔</span>Il programma <button class="term" data-t="devex">Developer Exchange</button> permette ai creatori di guadagnare soldi veri. Quest'anno scompare <button class="term" data-t="cassel">Erik Cassel</button>, cofondatore di Roblox.</li>
+<li><b>2014</b> – <span class="tl-icon">🤖</span>Roblox arriva su Android. La piattaforma supera i 30 milioni di account registrati.</li>
+<li><b>2015</b> – <span class="tl-icon">🎮</span>Roblox sbarca su Xbox One con 15 giochi selezionati, prima console ufficialmente supportata.</li>
+<li><b>2016</b> – <span class="tl-icon">🥽</span>Supporto alla realtà virtuale e grandi miglioramenti a Roblox Studio.</li>
+<li><b>2017</b> – <span class="tl-icon">⭐</span>Esplodono i giochi della community come <button class="term" data-t="adoptme">Adopt Me!</button> e <button class="term" data-t="jailbreak">Jailbreak</button>.</li>
+<li><b>2019</b> – <span class="tl-icon">🌍</span>Accordo con Tencent per portare Roblox in Cina.</li>
+<li><b>2020</b> – <span class="tl-icon">📈</span>Durante la pandemia Roblox raggiunge 100 milioni di utenti mensili, diventando un punto di ritrovo sociale per i giovani.</li>
+<li><b>2021</b> – <span class="tl-icon">📊</span>Roblox sbarca in borsa a Wall Street con una valutazione di 45 miliardi di dollari.</li>
+<li><b>2023</b> – <span class="tl-icon">🎯</span>Roblox arriva su PlayStation 4 e 5. Acquisisce Guilded, piattaforma social per gamer.</li>
+<li><b>Oggi</b> – <span class="tl-icon">🌟</span>Oltre 70 milioni di utenti al giorno. <button class="term" data-t="baszucki">David Baszucki</button> guida ancora l'azienda come CEO.</li>
 </ul>
 <h3>Curiosità</h3>
-<div class="box">🛠️ I giochi si creano con <button class="term" data-t="studio">Roblox Studio</button>, un programma gratuito, e si programmano con il linguaggio <button class="term" data-t="lua">Lua</button>.</div>
-<div class="box">🏢 La sede dell’azienda è a <b>San Mateo</b>, in California.</div>
-<div class="box">💸 Chi crea giochi di successo, può guadagnare veri <button class="term" data-t="robux">robux</button> che poi andrà a convertire in soldi veri.</div>
-<div class="box">🎮 Titoli come <button class="term" data-t="brookhaven">Brookhaven</button>, <button class="term" data-t="bloxfruits">Blox Fruits</button> e <button class="term" data-t="towerofhell">Tower of Hell</button> sono tra i più amati dalla community.</div>
+<div class="box"><div class="box-ill"><span class="ill shake">🛠️</span><span>I giochi si creano con <button class="term" data-t="studio">Roblox Studio</button>, un programma gratuito, e si programmano con il linguaggio <button class="term" data-t="lua">Lua</button>.</span></div></div>
+<div class="box"><div class="box-ill"><span class="ill">🏢</span><span>La sede dell'azienda è a <b>San Mateo</b>, in California, USA.</span></div></div>
+<div class="box"><div class="box-ill"><span class="ill glow">💸</span><span>Chi crea giochi di successo, può guadagnare veri <button class="term" data-t="robux">robux</button> che poi andrà a convertire in soldi veri.</span></div></div>
+<div class="box"><div class="box-ill"><span class="ill">🎮</span><span>Titoli come <button class="term" data-t="brookhaven">Brookhaven</button>, <button class="term" data-t="bloxfruits">Blox Fruits</button> e <button class="term" data-t="towerofhell">Tower of Hell</button> sono tra i più amati dalla community.</span></div></div>
+<div class="box"><div class="box-ill"><span class="ill">👥</span><span>Roblox ha oltre <b>70 milioni</b> di utenti attivi al giorno in tutto il mondo.</span></div></div>
+<div class="box"><div class="box-ill"><span class="ill shake">🏆</span><span>Ogni anno Roblox organizza i <b>Roblox Innovation Awards</b>, dove vengono premiati i migliori giochi della community.</span></div></div>
 
 </section>
 
