@@ -22,7 +22,7 @@ nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:
 nav a{color:var(--text);text-decoration:none;padding:6px 12px;border-radius:999px;font-weight:600;font-size:14px}
 nav a:hover{background:var(--bg)}
 header{text-align:center;padding:56px 20px 40px;position:relative}
-.subbtn{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px 7px 10px;cursor:pointer;font-weight:700;font-size:14px;color:var(--text);overflow:hidden}
+.subbtn{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px 7px 10px;cursor:pointer;font-weight:700;font-size:14px;color:var(--text)}
 .subbtn svg{width:20px;height:20px;flex:none}
 .subfull{position:fixed;inset:0;z-index:30;background:#0f0f0f;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:20px;animation:fadein .2s ease}
 .subfull[hidden]{display:none}
@@ -45,10 +45,10 @@ header{text-align:center;padding:56px 20px 40px;position:relative}
 .subfull .lab{margin:0;font-size:18px;color:#aaa;text-transform:uppercase;letter-spacing:1px}
 #subclose{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.12);border:0;color:#fff;width:40px;height:40px;border-radius:50%;font-size:24px;cursor:pointer;line-height:1}
 
-.cube-wrap{display:inline-block;overflow:hidden;vertical-align:middle;line-height:1}
+.cube-wrap{display:inline-block;overflow:hidden;vertical-align:baseline;min-width:0.62em;text-align:center}
 :root{--cube-dur:400ms}
-.cube-inner{display:flex;flex-direction:column;transition:transform var(--cube-dur) cubic-bezier(.4,0,.2,1)}
-.cube-inner span{display:block}
+.cube-inner{display:flex;flex-direction:column;transition:transform var(--cube-dur) cubic-bezier(.4,0,.2,1);-webkit-font-smoothing:antialiased;backface-visibility:hidden;transform:translateZ(0)}
+.cube-inner span{display:block;white-space:pre}
 @media (prefers-reduced-motion:reduce){.cube-inner{transition:none}}
 @media (orientation:landscape){.subfull{flex-direction:column;gap:14px}.subfull svg{width:64px;height:64px}.subfull h2{font-size:clamp(28px,6vw,48px)}.subfull .h{font-size:clamp(14px,3vw,22px)}.subfull .n{font-size:clamp(44px,12vw,90px);margin-top:0}.subfull .lab{font-size:16px}}
 header h1{font-size:clamp(34px,8vw,60px);margin:0 0 8px;letter-spacing:-1px;text-shadow:3px 3px 0 var(--accent2)}
@@ -97,7 +97,7 @@ nav a.act{background:var(--bg);color:var(--accent)}
 nav a{white-space:nowrap;padding:6px 9px;font-size:13px}
 .soc .row{display:flex;align-items:center;justify-content:center;gap:16px;margin:0 0 14px;flex-wrap:nowrap}
 .soc .btn,.soc a.info{flex:1;max-width:230px;text-align:center;min-width:0}
-.qr{width:76px;height:76px;padding:4px;background:#fff;border-radius:10px;border:1px solid var(--line);cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none}
+.qr{width:76px;height:76px;padding:4px;background:#fff;border-radius:10px;border:1px solid var(--line);cursor:pointer;display:flex;align-items:center;justify-content:center;flex:none;appearance:none;-webkit-appearance:none;margin:0}
 .modal{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6);padding:20px;animation:fadein .2s ease}
 .modal[hidden]{display:none}
 .idesc{max-height:38vh;overflow-y:auto;text-align:left;margin:0 0 16px;line-height:1.6;color:var(--muted);-webkit-overflow-scrolling:touch}
@@ -128,13 +128,13 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:10px 20px 30p
 <nav><a href="#home">BloxGame</a><a href="#roblox">Storia di Roblox</a><a href="#social">Social</a></nav>
 
 <header id="home" class="view">
-<button class="subbtn" id="subopen" aria-label="Vedi gli iscritti del canale">
+<button type="button" class="subbtn" id="subopen" aria-label="Vedi gli iscritti del canale">
 <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12Z"/></svg>
-<span id="subcount" style="overflow:hidden;display:inline-block;vertical-align:middle">129</span>
+<span id="subcount">135</span>
 </button>
 <h1>Blox<span>Game</span></h1>
 <p>Video, avventure e curiosità sul mondo di Roblox. Unisciti alla community del canale <b>@bloxgame-20</b>.</p>
-<a class="btn" href="https://www.youtube.com/@bloxgame-20" target="_blank" rel="noopener">▶ Guarda il canale</a>
+<a class="btn" href="https://www.youtube.com/@bloxgame-20" target="_blank" rel="noopener noreferrer">▶ Guarda il canale</a>
 <div class="feat">
 <div><b>🎮 Avventure</b><span>Giochiamo insieme ai mondi più divertenti di Roblox.</span></div>
 <div><b>🏗️ Giochi della community</b><span>Scopriamo le creazioni più originali fatte dai giocatori.</span></div>
@@ -151,29 +151,29 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:10px 20px 30p
 <p>Roblox non è un solo gioco: è una piattaforma dove milioni di persone creano e giocano esperienze fatte dalla community. Ecco chi l’ha inventata e come è cresciuta.</p>
 <h3>La timeline</h3>
 <ul class="tl">
-<li><b>1989</b> – <span class="tl-icon">🔬</span><button class="term" data-t="baszucki">David Baszucki</button> fonda <em>Knowledge Revolution</em> e crea <em>Interactive Physics</em>, software di simulazione fisica: l'idea da cui nascerà Roblox.</li>
-<li><b>2004</b> – <span class="tl-icon">🧱</span>Baszucki e il socio <button class="term" data-t="cassel">Erik Cassel</button> fondano <button class="term" data-t="dynablocks">DynaBlocks</button>, prima versione di Roblox con fisica e mattoncini virtuali.</li>
+<li><b>1989</b> – <span class="tl-icon">🔬</span><button type="button" class="term" data-t="baszucki">David Baszucki</button> fonda <em>Knowledge Revolution</em> e crea <em>Interactive Physics</em>, software di simulazione fisica: l'idea da cui nascerà Roblox.</li>
+<li><b>2004</b> – <span class="tl-icon">🧱</span>Baszucki e il socio <button type="button" class="term" data-t="cassel">Erik Cassel</button> fondano <button type="button" class="term" data-t="dynablocks">DynaBlocks</button>, prima versione di Roblox con fisica e mattoncini virtuali.</li>
 <li><b>2005</b> – <span class="tl-icon">✏️</span>Il nome cambia in <em>Roblox</em>, unendo le parole "robots" e "blocks".</li>
 <li><b>2006</b> – <span class="tl-icon">🚀</span>Lancio ufficiale al pubblico: arrivano Roblox Studio, il sistema degli avatar e i badge.</li>
-<li><b>2007</b> – <span class="tl-icon">💰</span>Arrivano i <button class="term" data-t="robux">Robux</button> e il Builders Club, con vantaggi per i membri.</li>
+<li><b>2007</b> – <span class="tl-icon">💰</span>Arrivano i <button type="button" class="term" data-t="robux">Robux</button> e il Builders Club, con vantaggi per i membri.</li>
 <li><b>2011</b> – <span class="tl-icon">🏟️</span>Prima convention in presenza: il ROBLOX Rally a San Francisco, con oltre 1.000 partecipanti.</li>
 <li><b>2012</b> – <span class="tl-icon">📱</span>Roblox arriva su iOS a dicembre, aprendo la piattaforma agli smartphone per la prima volta.</li>
-<li><b>2013</b> – <span class="tl-icon">💔</span>Il programma <button class="term" data-t="devex">Developer Exchange</button> permette ai creatori di guadagnare soldi veri. Quest'anno scompare <button class="term" data-t="cassel">Erik Cassel</button>, cofondatore di Roblox.</li>
+<li><b>2013</b> – <span class="tl-icon">💔</span>Il programma <button type="button" class="term" data-t="devex">Developer Exchange</button> permette ai creatori di guadagnare soldi veri. Quest'year scompare <button type="button" class="term" data-t="cassel">Erik Cassel</button>, cofondatore di Roblox.</li>
 <li><b>2014</b> – <span class="tl-icon">🤖</span>Roblox arriva su Android. La piattaforma supera i 30 milioni di account registrati.</li>
 <li><b>2015</b> – <span class="tl-icon">🎮</span>Roblox sbarca su Xbox One con 15 giochi selezionati, prima console ufficialmente supportata.</li>
 <li><b>2016</b> – <span class="tl-icon">🥽</span>Supporto alla realtà virtuale e grandi miglioramenti a Roblox Studio.</li>
-<li><b>2017</b> – <span class="tl-icon">⭐</span>Esplodono i giochi della community come <button class="term" data-t="adoptme">Adopt Me!</button> e <button class="term" data-t="jailbreak">Jailbreak</button>.</li>
+<li><b>2017</b> – <span class="tl-icon">⭐</span>Esplodono i giochi della community come <button type="button" class="term" data-t="adoptme">Adopt Me!</button> e <button type="button" class="term" data-t="jailbreak">Jailbreak</button>.</li>
 <li><b>2019</b> – <span class="tl-icon">🌍</span>Accordo con Tencent per portare Roblox in Cina.</li>
 <li><b>2020</b> – <span class="tl-icon">📈</span>Durante la pandemia Roblox raggiunge 100 milioni di utenti mensili, diventando un punto di ritrovo sociale per i giovani.</li>
 <li><b>2021</b> – <span class="tl-icon">📊</span>Roblox sbarca in borsa a Wall Street con una valutazione di 45 miliardi di dollari.</li>
 <li><b>2023</b> – <span class="tl-icon">🎯</span>Roblox arriva su PlayStation 4 e 5. Acquisisce Guilded, piattaforma social per gamer.</li>
-<li><b>Oggi</b> – <span class="tl-icon">🌟</span>Oltre 70 milioni di utenti al giorno. <button class="term" data-t="baszucki">David Baszucki</button> guida ancora l'azienda come CEO.</li>
+<li><b>Oggi</b> – <span class="tl-icon">🌟</span>Oltre 70 milioni di utenti al giorno. <button type="button" class="term" data-t="baszucki">David Baszucki</button> guida ancora l'azienda come CEO.</li>
 </ul>
 <h3>Curiosità</h3>
-<div class="box"><div class="box-ill"><span class="ill shake">🛠️</span><span>I giochi si creano con <button class="term" data-t="studio">Roblox Studio</button>, un programma gratuito, e si programmano con il linguaggio <button class="term" data-t="lua">Lua</button>.</span></div></div>
+<div class="box"><div class="box-ill"><span class="ill shake">🛠️</span><span>I giochi si creano con <button type="button" class="term" data-t="studio">Roblox Studio</button>, un programma gratuito, e si programmano con il linguaggio <button type="button" class="term" data-t="lua">Lua</button>.</span></div></div>
 <div class="box"><div class="box-ill"><span class="ill">🏢</span><span>La sede dell'azienda è a <b>San Mateo</b>, in California, USA.</span></div></div>
-<div class="box"><div class="box-ill"><span class="ill glow">💸</span><span>Chi crea giochi di successo, può guadagnare veri <button class="term" data-t="robux">robux</button> che poi andrà a convertire in soldi veri.</span></div></div>
-<div class="box"><div class="box-ill"><span class="ill">🎮</span><span>Titoli come <button class="term" data-t="brookhaven">Brookhaven</button>, <button class="term" data-t="bloxfruits">Blox Fruits</button> e <button class="term" data-t="towerofhell">Tower of Hell</button> sono tra i più amati dalla community.</span></div></div>
+<div class="box"><div class="box-ill"><span class="ill glow">💸</span><span>Chi crea giochi di successo, può guadagnare veri <button type="button" class="term" data-t="robux">robux</button> che poi andrà a convertire in soldi veri.</span></div></div>
+<div class="box"><div class="box-ill"><span class="ill">🎮</span><span>Titoli come <button type="button" class="term" data-t="brookhaven">Brookhaven</button> e <button type="button" class="term" data-t="bloxfruits">Blox Fruits</button> sono tra i più amati dalla community.</span></div></div>
 <div class="box"><div class="box-ill"><span class="ill">👥</span><span>Roblox ha oltre <b>70 milioni</b> di utenti attivi al giorno in tutto il mondo.</span></div></div>
 <div class="box"><div class="box-ill"><span class="ill shake">🏆</span><span>Ogni anno Roblox organizza i <b>Roblox Innovation Awards</b>, dove vengono premiati i migliori giochi della community.</span></div></div>
 
@@ -183,8 +183,8 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:10px 20px 30p
 <h2>I nostri social</h2>
 <p>Seguici per non perderti i nuovi video e restare sempre aggiornato!</p>
 <div class="soc">
-<div class="row"><a class="btn info" data-name="YouTube" data-desc="Il nostro canale YouTube: @bloxgame-20. Qui trovi tutti i nostri video su Roblox, tra avventure, giochi della community e curiosità. Iscriviti per non perdere i nuovi video!" data-url="https://www.youtube.com/@bloxgame-20" href="https://www.youtube.com/@bloxgame-20" target="_blank" rel="noopener">▶ YouTube</a><div class="qr" role="button" tabindex="0" aria-label="Ingrandisci il QR code di YouTube" data-name="YouTube" data-url="https://www.youtube.com/@bloxgame-20"></div></div>
-<div class="row"><a class="btn wa info" data-name="Canale WhatsApp" data-desc="Il nostro canale WhatsApp. Qui pubblichiamo gli aggiornamenti sui nuovi video, le novità del canale e gli annunci, direttamente sul tuo telefono. È un canale a senso unico: noi pubblichiamo e tu leggi e puoi reagire ai messaggi." data-url="https://whatsapp.com/channel/0029Vb7l3YfJZg47366nmT2d" data-app="whatsapp://channel/0029Vb7l3YfJZg47366nmT2d" href="https://whatsapp.com/channel/0029Vb7l3YfJZg47366nmT2d" target="_blank" rel="noopener">💬 Canale WhatsApp</a><div class="qr" role="button" tabindex="0" aria-label="Ingrandisci il QR code del canale WhatsApp" data-name="Canale WhatsApp" data-url="https://whatsapp.com/channel/0029Vb7l3YfJZg47366nmT2d"></div></div>
+<div class="row"><a class="btn info" data-name="YouTube" data-desc="Il nostro canale YouTube: @bloxgame-20. Qui trovi tutti i nostri video su Roblox, tra avventure, giochi della community e curiosità. Iscriviti per non perdere i nuovi video!" data-url="https://www.youtube.com/@bloxgame-20" href="https://www.youtube.com/@bloxgame-20" target="_blank" rel="noopener noreferrer">▶ YouTube</a><button type="button" class="qr" aria-label="Ingrandisci il QR code di YouTube" data-name="YouTube" data-url="https://www.youtube.com/@bloxgame-20"></button></div>
+<div class="row"><a class="btn wa info" data-name="Canale WhatsApp" data-desc="Il nostro canale WhatsApp. Qui pubblichiamo gli aggiornamenti sui nuovi video, le novità del canale e gli annunci, direttamente sul tuo telefono. È un canale a senso unico: noi pubblichiamo e tu leggi e puoi reagire ai messaggi." data-url="https://whatsapp.com/channel/0029Vb7l3YfJZg47366nmT2d" data-app="whatsapp://channel/0029Vb7l3YfJZg47366nmT2d" href="https://whatsapp.com/channel/0029Vb7l3YfJZg47366nmT2d" target="_blank" rel="noopener noreferrer">💬 Canale WhatsApp</a><button type="button" class="qr" aria-label="Ingrandisci il QR code del canale WhatsApp" data-name="Canale WhatsApp" data-url="https://whatsapp.com/channel/0029Vb7l3YfJZg47366nmT2d"></button></div>
 </div>
 <p class="small" style="text-align:center">Tocca un QR code per ingrandirlo.</p>
 </section>
@@ -197,8 +197,8 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:10px 20px 30p
 <div class="kofi-icon">☕</div>
 <div><b>BloxGame su Ko-fi</b><span class="small">ko-fi.com/bloxgame</span></div>
 </div>
-<p><button class="term" data-t="kofi">Ko-fi</button> è il sito dove ci sostieni: puoi donare una volta sola o, se vuoi, ogni mese, scegliendo tu l’importo. Niente account obbligatorio, basta una carta o PayPal.</p>
-<a class="btn alt" id="donate" href="https://ko-fi.com/bloxgame" target="_blank" rel="noopener">Dona su Ko-fi</a>
+<p><button type="button" class="term" data-t="kofi">Ko-fi</button> è il sito dove ci sostieni: puoi donare una volta sola o, se vuoi, ogni mese, scegliendo tu l’importo. Niente account obbligatorio, basta una carta o PayPal.</p>
+<a class="btn alt" id="donate" href="https://ko-fi.com/bloxgame" target="_blank" rel="noopener noreferrer">Dona su Ko-fi</a>
 <p class="safe">🔒 Pagamento sicuro gestito da Ko-fi tramite PayPal o carta.</p>
 </section>
 DONA END -->
@@ -206,22 +206,22 @@ DONA END -->
 
 <div class="modal" id="modal" hidden>
 <div class="mbox" role="dialog" aria-modal="true">
-<button id="mclose" aria-label="Chiudi">×</button>
+<button type="button" id="mclose" aria-label="Chiudi">×</button>
 <p id="mname"></p>
 <div id="mqr"></div>
-<div style="display:flex;gap:10px;justify-content:center"><button class="btn alt" id="mshare">Condividi</button><button class="btn" id="mdownload" style="background:#27ae60">⬇ Scarica</button></div>
+<div style="display:flex;gap:10px;justify-content:center"><button type="button" class="btn alt" id="mshare">Condividi</button><button type="button" class="btn" id="mdownload" style="background:#27ae60">⬇ Scarica</button></div>
 <p class="small" id="mmsg"></p>
 </div>
 </div>
 
 <div class="modal" id="infoModal" hidden>
 <div class="mbox" role="dialog" aria-modal="true">
-<button id="iclose" aria-label="Chiudi" style="position:absolute;top:6px;right:10px;background:none;border:0;color:var(--muted);font-size:28px;cursor:pointer;line-height:1">×</button>
+<button type="button" id="iclose" aria-label="Chiudi" style="position:absolute;top:6px;right:10px;background:none;border:0;color:var(--muted);font-size:28px;cursor:pointer;line-height:1">×</button>
 <p id="iname"></p>
 <div class="idesc" id="idesc"></div>
 <div class="stack">
-<a class="btn" id="iopen" href="#" target="_blank" rel="noopener">Apri</a>
-<button class="btn alt" id="ishare">Condividi</button>
+<a class="btn" id="iopen" href="#" target="_blank" rel="noopener noreferrer">Apri</a>
+<button type="button" class="btn alt" id="ishare">Condividi</button>
 </div>
 <p class="small" id="imsg" style="margin:10px 0 0;font-weight:400;word-break:break-all"></p>
 </div>
@@ -231,35 +231,35 @@ DONA END -->
 <div class="speedctrl" id="speedctrl">
 <div class="speedlabel" id="speedlabel"><span id="speedname">Medio</span></div>
 <div class="speedmenu" id="speedmenu">
-<button data-ms="800" class="speedopt">🐢 Piano</button>
-<button data-ms="400" class="speedopt sel">⚡ Medio</button>
-<button data-ms="150" class="speedopt">🚀 Veloce</button>
-<button data-ms="custom" class="speedopt">✏️ Personalizzato</button>
+<button type="button" data-ms="800" class="speedopt">🐢 Piano</button>
+<button type="button" data-ms="400" class="speedopt sel">⚡ Medio</button>
+<button type="button" data-ms="150" class="speedopt">🚀 Veloce</button>
+<button type="button" data-ms="custom" class="speedopt">✏️ Personalizzato</button>
 </div>
 <div class="speedcustom" id="speedcustom">
 <input type="number" id="speedinput" min="50" max="5000" value="400" placeholder="ms">
 <span>ms</span>
-<button onclick="applyCustomSpeed()" style="background:#6b97ff;border:0;color:#fff;padding:5px 10px;border-radius:6px;cursor:pointer;font-size:12px">OK</button>
+<button type="button" onclick="applyCustomSpeed()" style="background:#6b97ff;border:0;color:#fff;padding:5px 10px;border-radius:6px;cursor:pointer;font-size:12px">OK</button>
 </div>
 </div>
-<button id="subclose" aria-label="Chiudi">×</button>
+<button type="button" id="subclose" aria-label="Chiudi">×</button>
 <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12Z"/></svg>
 <div>
 <h2>BloxGame</h2>
 <p class="h">@bloxgame-20</p>
-<p class="n" id="subfullcount">129</p>
+<p class="n" id="subfullcount">135</p>
 <p class="lab">Iscritti</p>
 </div>
 </div>
 
 <div class="tinfo" id="tinfo" hidden>
-<div class="tbox" role="dialog" aria-modal="true"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px"><h4 id="tname" style="margin:0 0 10px;flex:1"></h4><button class="tclose" id="tclose" aria-label="Chiudi">✕</button></div>
+<div class="tbox" role="dialog" aria-modal="true"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px"><h4 id="tname" style="margin:0 0 10px;flex:1"></h4><button type="button" class="tclose" id="tclose" aria-label="Chiudi">✕</button></div>
 <p id="tdesc"></p>
 </div>
 </div>
 <footer></footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 (function(){
   var views=["home","roblox","social"];
@@ -295,7 +295,6 @@ DONA END -->
       modal.hidden=false;
     }
     el.addEventListener("click",open);
-    el.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();open();}});
   });
   modal.addEventListener("click",function(e){if(e.target===modal)close();});
   document.getElementById("mclose").addEventListener("click",close);
@@ -306,20 +305,25 @@ DONA END -->
     }else{msg.textContent=cur.url;}
   }
   document.getElementById("mdownload").addEventListener("click",function(){
+    var filename="qr-"+cur.name.replace(/\s+/g,"-").toLowerCase()+".png";
     var canvas=document.querySelector("#mqr canvas");
+    var img=document.querySelector("#mqr img");
+    var dataUrl="";
     if(canvas){
+      try{dataUrl=canvas.toDataURL("image/png");}catch(e){}
+    }
+    if(!dataUrl&&img&&img.src){
+      dataUrl=img.src;
+    }
+    if(dataUrl){
       var a=document.createElement("a");
-      a.href=canvas.toDataURL("image/png");
-      a.download="qr-"+cur.name.replace(/\s+/g,"-").toLowerCase()+".png";
+      a.href=dataUrl;
+      a.download=filename;
+      document.body.appendChild(a);
       a.click();
-    } else {
-      var img=document.querySelector("#mqr img");
-      if(img){
-        var a=document.createElement("a");
-        a.href=img.src;
-        a.download="qr-"+cur.name.replace(/\s+/g,"-").toLowerCase()+".png";
-        a.click();
-      }
+      document.body.removeChild(a);
+    }else{
+      msg.textContent="Impossibile scaricare il QR code.";
     }
   });
   document.getElementById("mshare").addEventListener("click",function(){
@@ -354,7 +358,7 @@ DONA END -->
     setTimeout(function(){
       if(done)return;
       done=true;
-      var w=window.open(url,"_blank");
+      var w=window.open(url,"_blank","noopener,noreferrer");
       if(!w)window.location.href=url;
     },1500);
     window.location.href=cur.app;
@@ -375,10 +379,10 @@ DONA END -->
 </script>
 <script>
 (function(){
-  var ISCRITTI=129;
+  var ISCRITTI=135;
   var SCRIPT_URL="https://script.google.com/macros/s/AKfycbz2e6vT1nNzo7TDJ0JBGDBGcZxlvhAvfCUx_HBYHg9-DCyx3zr7ssTGlFgzWHb4CwUgMQ/exec";
   function fmt(n){return n.toLocaleString("it-IT");}
-  var _prevText={subcount:"129",subfullcount:"129"};
+  var _prevText={subcount:"135",subfullcount:"135"};
   function cubeFlip(el,newText,sali){
     var id=el.id||"el";
     var oldText=_prevText[id]||"0";
@@ -397,13 +401,11 @@ DONA END -->
       wrap.className="cube-wrap";
       wrap.style.height=h+"px";
       if(oc===nc){
-        // Cifra invariata: mostra direttamente senza animazione
         var s=document.createElement("span");
-        s.style.height=h+"px";s.style.lineHeight=h+"px";
+        s.style.height=h+"px";s.style.lineHeight=h+"px";s.style.whiteSpace="pre";
         s.textContent=nc;
         wrap.appendChild(s);
       } else {
-        // Cifra cambiata: effetto cubo solo su questa
         var inner=document.createElement("span");
         inner.className="cube-inner";
         inner.style.height=(h*2)+"px";
@@ -448,7 +450,6 @@ DONA END -->
   poll();
   setInterval(poll,60000);
 
-  // Controllo velocità animazione
   var speedMenu=document.getElementById("speedmenu");
   var speedCustom=document.getElementById("speedcustom");
   var speedName=document.getElementById("speedname");
@@ -472,7 +473,7 @@ DONA END -->
         document.getElementById("speedlabel").style.display="none";
       }else{
         speedCustom.classList.remove("open");
-        var val=parseInt(ms);
+        var val=parseInt(ms,10);
         document.documentElement.style.setProperty("--cube-dur",val+"ms");
         speedName.textContent=speedNames[val]||val+"ms";
         document.getElementById("speedlabel").style.display="flex";
@@ -482,7 +483,7 @@ DONA END -->
   });
 
   window.applyCustomSpeed=function(){
-    var val=parseInt(document.getElementById("speedinput").value);
+    var val=parseInt(document.getElementById("speedinput").value,10);
     if(val>=50&&val<=5000){
       document.documentElement.style.setProperty("--cube-dur",val+"ms");
       speedName.textContent=val+" ms";
@@ -513,7 +514,7 @@ DONA END -->
     robux:{n:"Robux",d:"La valuta virtuale ufficiale di Roblox, introdotta nel 2007. Si usa per acquistare oggetti, accessori e funzioni speciali nei giochi. Chi crea giochi popolari può guadagnare Robux e poi convertirli in denaro reale tramite il programma Developer Exchange."},
     devex:{n:"Developer Exchange",d:"Programma lanciato da Roblox nel 2013 che permette ai creatori di convertire i Robux guadagnati dalla loro community in denaro reale. Ha trasformato Roblox in una vera piattaforma di lavoro per molti sviluppatori."},
     adoptme:{n:"Adopt Me!",d:"Uno dei giochi più giocati in assoluto su Roblox. In Adopt Me! i giocatori possono adottare e prendersi cura di animali fantastici, scambiare oggetti rari e costruire la propria casa. Ha raggiunto miliardi di visite sulla piattaforma."},
-    jailbreak:{n:"Jailbreak",d:"Un popolare gioco di Roblox in cui i giocatori scelgono se fare i criminali o la polizia. I criminali cercano di scappare dalla prigione, rapinare banche e sfuggire agli agenti. Creato da Badimo, è uno dei titoli più longevi e seguiti della piattaforma."},
+    jailbreak:{n:"Jailbreak",d:"Un popolare gioco di Roblox in cui i giocatori scelgono se fare i criminali o la polizia. /i criminali cercano di scappare dalla prigione, rapinare banche e sfuggire agli agenti. Creato da Badimo, è uno dei titoli più longevi e seguiti della piattaforma."},
     studio:{n:"Roblox Studio",d:"Il programma gratuito con cui chiunque può creare giochi su Roblox. Funziona su PC e Mac e permette di costruire mondi 3D, aggiungere script e pubblicare le proprie esperienze sulla piattaforma. È lo strumento principale di tutti i creator Roblox."},
     lua:{n:"Lua",d:"Il linguaggio di programmazione usato in Roblox Studio per scrivere la logica dei giochi. È un linguaggio leggero e relativamente semplice da imparare, nato in Brasile negli anni '90. Roblox usa una versione modificata chiamata Luau."},
     brookhaven:{n:"Brookhaven 🏡RP",d:"Un gioco di ruolo (roleplay) su Roblox dove i giocatori possono vivere una vita virtuale: scegliere una casa, un lavoro, guidare auto e interagire con gli altri. È uno dei giochi di Roblox con più visite di sempre."},
@@ -535,7 +536,6 @@ DONA END -->
   document.getElementById("tclose").addEventListener("click",closeTerm);
   panel.addEventListener("click",function(e){if(e.target===panel)closeTerm();});
   document.addEventListener("keydown",function(e){if(e.key==="Escape")closeTerm();});
-
 })();
 </script>
 </body>
