@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="BloxGame: video, avventure, curiosità e quiz sul mondo di Roblox. Scopri la storia della piattaforma e consulta i codici promozionali con stato e istruzioni di riscatto.">
+<meta name="theme-color" content="#e2231a">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="BloxGame – Il canale Roblox">
+<meta property="og:description" content="Video, avventure, curiosità e quiz sul mondo di Roblox. Unisciti alla community BloxGame.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23e2231a'/%3E%3Ctext x='50' y='67' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <title>BloxGame – Il canale Roblox</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap');
@@ -54,9 +64,10 @@ header{text-align:center;padding:56px 20px 40px;position:relative}
 header h1{font-size:clamp(34px,8vw,60px);margin:0 0 8px;letter-spacing:-1px;text-shadow:3px 3px 0 var(--accent2)}
 header h1 span{color:var(--accent)}
 header p{max-width:560px;margin:0 auto 22px;color:var(--muted)}
-.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;padding:13px 24px;border-radius:12px;border:0;border-bottom:4px solid rgba(0,0,0,.25);cursor:pointer;font-size:16px;transition:transform .1s}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;padding:13px 24px;border-radius:12px;border:0;border-bottom:4px solid rgba(0,0,0,.25);cursor:pointer;font-size:16px;transition:transform .1s;font-family:inherit}
 .btn:active{transform:translateY(2px);border-bottom-width:2px}
 .btn.alt{background:var(--accent2)}
+.btn.sm{padding:8px 14px;font-size:14px;border-radius:10px}
 main{max-width:820px;margin:0 auto;padding:0 18px 40px}
 section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;margin-bottom:22px;box-shadow:0 8px 0 rgba(0,0,0,.05)}
 h2{margin:0 0 14px;font-size:26px}
@@ -120,17 +131,98 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:10px 20px 30p
 .tbox h4{margin:0 0 10px;font-size:20px}
 .tbox p{margin:0;color:var(--muted);line-height:1.6}
 .tclose{position:sticky;top:0;float:right;background:var(--bg);border:0;color:var(--text);font-size:14px;font-weight:300;cursor:pointer;line-height:1;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:-2px -2px 8px 8px;flex:none}
-</style>
 
+/* Stili Mini-Quiz */
+.quiz-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:14px;color:var(--muted);font-weight:700}
+.quiz-q{font-size:19px;font-weight:800;margin:0 0 16px}
+.quiz-opts{display:flex;flex-direction:column;gap:10px}
+.qopt{background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:12px 16px;text-align:left;font:inherit;font-weight:700;color:var(--text);cursor:pointer;transition:all .15s}
+.qopt:hover:not(:disabled){border-color:var(--accent2);transform:translateY(-1px)}
+.qopt:disabled{cursor:default}
+.qopt.ok{background:rgba(31,168,85,.15);border-color:#1fa855;color:#1fa855}
+.qopt.no{background:rgba(226,35,26,.15);border-color:var(--accent);color:var(--accent)}
+.quiz-fb{margin-top:14px;font-weight:700;min-height:24px}
+.quiz-res{text-align:center;padding:12px 0}
+.quiz-res .score{font-size:44px;font-weight:800;color:var(--accent2);line-height:1.1;margin:8px 0}
+
+/* Stili Promo Codes & Barra di ricerca con animazione verso sinistra */
+.promo-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;min-height:42px;position:relative}
+.promo-title{min-width:0}.promo-header h2{margin:0;white-space:nowrap;transition:opacity .25s ease}.promo-subtitle{margin:4px 0 0;color:var(--muted);font-size:13px;line-height:1.45;max-width:520px}
+.search-wrap{display:flex;align-items:center;justify-content:flex-end;margin-left:auto;background:var(--bg);border:1.5px solid var(--line);border-radius:999px;padding:3px;transition:width .38s cubic-bezier(.22,1,.36,1),border-color .25s ease,box-shadow .25s ease;width:40px;overflow:hidden;flex:none}
+.search-wrap.open{width:270px;max-width:65vw;border-color:var(--accent2);box-shadow:0 4px 14px rgba(43,109,246,.18)}
+@media (max-width:480px){
+  .promo-header.searching .promo-title{opacity:0;pointer-events:none;width:0;overflow:hidden}
+  .search-wrap.open{width:100%;max-width:100%}
+}
+.search-input{border:0;background:transparent;color:var(--text);font:inherit;font-size:14px;font-weight:600;width:0;opacity:0;padding:0;outline:none;transition:width .38s cubic-bezier(.22,1,.36,1),opacity .25s ease,padding .3s ease}
+.search-wrap.open .search-input{width:100%;opacity:1;padding:4px 8px 4px 14px}
+.search-toggle{width:32px;height:32px;border-radius:50%;border:0;background:transparent;color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none;transition:background .2s,color .2s}
+.search-toggle:hover{background:var(--card);color:var(--accent2)}
+.search-clear{border:0;background:none;color:var(--muted);font-size:16px;cursor:pointer;padding:0 6px;display:none;line-height:1}
+.search-wrap.open.has-text .search-clear{display:block}
+
+.code-card{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:12px;transition:transform .15s,border-color .15s}
+.code-card:hover{border-color:var(--accent2)}
+.code-info{min-width:0}
+.code-title{display:block;font-size:16px;font-weight:800;color:var(--text);margin:2px 0 3px}
+.code-world{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:800;color:var(--accent2);background:rgba(43,109,246,0.1);border:1px solid rgba(43,109,246,0.22);padding:3px 10px;border-radius:999px;margin:2px 0 6px;line-height:1.3}
+.code-desc{display:block;font-size:13px;line-height:1.4;color:var(--muted)}
+.code-use{display:block;font-size:12.5px;font-weight:700;color:var(--text);margin-top:6px;line-height:1.35}
+.code-uses{display:block;font-size:12px;font-weight:600;color:var(--accent2);margin-top:4px;line-height:1.3}
+.code-tag{display:inline-flex;align-items:center;gap:6px;background:transparent;border:0;color:var(--text);font-family:inherit;font-weight:700;font-size:16px;padding:0;margin-bottom:4px;cursor:default;transition:none}
+.code-tag:hover{color:var(--text)}
+.copy-btn{flex:none;background:var(--accent2);color:#fff;border:0;border-bottom:3px solid rgba(0,0,0,.25);border-radius:10px;padding:9px 14px;font:inherit;font-weight:800;font-size:14px;cursor:pointer;transition:transform .1s;min-width:86px}
+.copy-btn:active{transform:translateY(2px);border-bottom-width:1px}
+.copy-btn.copied{background:#1fa855}
+.redeem-box{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* Descrizione oggetto nel modal */
+.item-badge{display:inline-block;background:var(--bg);border:1px solid var(--line);color:var(--accent2);font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;margin-bottom:8px}
+
+.skip-link{position:absolute;left:12px;top:-60px;z-index:100;background:var(--card);color:var(--text);padding:10px 14px;border:2px solid var(--accent2);border-radius:10px}.skip-link:focus{top:12px}
+:focus-visible{outline:3px solid var(--accent2);outline-offset:3px}
+.status-tag{display:inline-block;margin:5px 0 0 4px;padding:2px 8px;border-radius:999px;background:rgba(226,35,26,.10);color:var(--accent);font-size:12px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+/* ===== MIGLIORAMENTI MOBILE ===== */
+@media (max-width: 600px) {
+  section{padding:18px 14px}
+  .code-card{flex-direction:column;align-items:flex-start;gap:10px;padding:16px}
+  .code-card .copy-btn{width:100%;padding:13px;font-size:16px;border-radius:12px;text-align:center}
+  .code-tag{font-size:18px;margin-bottom:6px}
+  .code-title{font-size:17px}
+  .code-desc{font-size:13px;line-height:1.45}
+  .quiz-q{font-size:21px;line-height:1.4}
+  .qopt{padding:16px 18px;font-size:16px;border-radius:14px}
+  .quiz-head{flex-direction:column;gap:8px;align-items:flex-start}
+  h2{font-size:22px}
+  h3{font-size:18px}
+  .box{padding:14px}
+  .tl li{margin-bottom:20px}
+  .tl b{font-size:16px}
+  main{padding:0 12px 40px}
+  .feat{grid-template-columns:1fr}
+  .feat div{padding:14px}
+  .feat b{font-size:16px}
+  .feat span{font-size:15px}
+}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"BloxGame","description":"Video, avventure, curiosità e quiz sul mondo di Roblox.","inLanguage":"it-IT"}</script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Salta al contenuto</a>
 <div class="cubes" aria-hidden="true"><i style="top:8%;left:6%"></i><i style="top:20%;left:85%"></i><i style="top:55%;left:12%"></i><i style="top:70%;left:78%"></i><i style="top:35%;left:45%"></i><i style="top:85%;left:30%"></i></div>
-<nav><a href="#home">BloxGame</a><a href="#roblox">Storia di Roblox</a><a href="#social">Social</a></nav>
+<nav aria-label="Navigazione principale">
+  <a href="#home">BloxGame</a>
+  <a href="#roblox">Storia di Roblox</a>
+  <a href="#quiz">Mini-Quiz</a>
+  <a href="#codici">Promo Codes</a>
+  <a href="#social">Social</a>
+</nav>
 
 <header id="home" class="view">
 <button type="button" class="subbtn" id="subopen" aria-label="Vedi gli iscritti del canale">
 <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12Z"/></svg>
-<span id="subcount">135</span>
+<span id="subcount" aria-live="polite">—</span>
 </button>
 <h1>Blox<span>Game</span></h1>
 <p>Video, avventure e curiosità sul mondo di Roblox. Unisciti alla community del canale <b>@bloxgame-20</b>.</p>
@@ -142,10 +234,12 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:10px 20px 30p
 </div>
 <div class="cta">
 <a class="btn alt" href="#roblox">📚 Storia di Roblox</a>
+<a class="btn" href="#quiz" style="background:#1fa855">🧠 Gioca al Mini-Quiz</a>
+<a class="btn alt" href="#codici">🎁 Promo Codes</a>
 </div>
 </header>
 
-<main>
+<main id="main-content">
 <section id="roblox" class="view">
 <h2>La storia di Roblox</h2>
 <p>Roblox non è un solo gioco: è una piattaforma dove milioni di persone creano e giocano esperienze fatte dalla community. Ecco chi l’ha inventata e come è cresciuta.</p>
@@ -158,25 +252,64 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:10px 20px 30p
 <li><b>2007</b> – <span class="tl-icon">💰</span>Arrivano i <button type="button" class="term" data-t="robux">Robux</button> e il Builders Club, con vantaggi per i membri.</li>
 <li><b>2011</b> – <span class="tl-icon">🏟️</span>Prima convention in presenza: il ROBLOX Rally a San Francisco, con oltre 1.000 partecipanti.</li>
 <li><b>2012</b> – <span class="tl-icon">📱</span>Roblox arriva su iOS a dicembre, aprendo la piattaforma agli smartphone per la prima volta.</li>
-<li><b>2013</b> – <span class="tl-icon">💔</span>Il programma <button type="button" class="term" data-t="devex">Developer Exchange</button> permette ai creatori di guadagnare soldi veri. Quest'year scompare <button type="button" class="term" data-t="cassel">Erik Cassel</button>, cofondatore di Roblox.</li>
+<li><b>2013</b> – <span class="tl-icon">💔</span>Il programma <button type="button" class="term" data-t="devex">Developer Exchange</button> permette ai creatori di guadagnare soldi veri. Nello stesso anno scompare <button type="button" class="term" data-t="cassel">Erik Cassel</button>, cofondatore di Roblox.</li>
 <li><b>2014</b> – <span class="tl-icon">🤖</span>Roblox arriva su Android. La piattaforma supera i 30 milioni di account registrati.</li>
 <li><b>2015</b> – <span class="tl-icon">🎮</span>Roblox sbarca su Xbox One con 15 giochi selezionati, prima console ufficialmente supportata.</li>
 <li><b>2016</b> – <span class="tl-icon">🥽</span>Supporto alla realtà virtuale e grandi miglioramenti a Roblox Studio.</li>
 <li><b>2017</b> – <span class="tl-icon">⭐</span>Esplodono i giochi della community come <button type="button" class="term" data-t="adoptme">Adopt Me!</button> e <button type="button" class="term" data-t="jailbreak">Jailbreak</button>.</li>
-<li><b>2019</b> – <span class="tl-icon">🌍</span>Accordo con Tencent per portare Roblox in Cina.</li>
-<li><b>2020</b> – <span class="tl-icon">📈</span>Durante la pandemia Roblox raggiunge 100 milioni di utenti mensili, diventando un punto di ritrovo sociale per i giovani.</li>
-<li><b>2021</b> – <span class="tl-icon">📊</span>Roblox sbarca in borsa a Wall Street con una valutazione di 45 miliardi di dollari.</li>
-<li><b>2023</b> – <span class="tl-icon">🎯</span>Roblox arriva su PlayStation 4 e 5. Acquisisce Guilded, piattaforma social per gamer.</li>
-<li><b>Oggi</b> – <span class="tl-icon">🌟</span>Oltre 70 milioni di utenti al giorno. <button type="button" class="term" data-t="baszucki">David Baszucki</button> guida ancora l'azienda come CEO.</li>
+<li><b>2019</b> – <span class="tl-icon">🌍</span>Roblox continua la propria espansione internazionale; il lancio della versione cinese avverrà successivamente, nel 2021.</li>
+<li><b>2020</b> – <span class="tl-icon">📈</span>Durante la pandemia cresce l’utilizzo della piattaforma e Roblox diventa per molte persone un luogo digitale di gioco e socialità.</li>
+<li><b>2021</b> – <span class="tl-icon">📊</span>Roblox completa la quotazione al New York Stock Exchange tramite direct listing. Nello stesso anno acquisisce Guilded.</li>
+<li><b>2023</b> – <span class="tl-icon">🎯</span>Roblox arriva su PlayStation 4 e PlayStation 5.</li>
+<li><b>Oggi</b> – <span class="tl-icon">🌟</span>Roblox continua a evolversi come piattaforma di gioco e creazione. I dati sugli utenti cambiano nel tempo: per questo evitiamo numeri non datati.</li>
 </ul>
 <h3>Curiosità</h3>
-<div class="box"><div class="box-ill"><span class="ill shake">🛠️</span><span>I giochi si creano con <button type="button" class="term" data-t="studio">Roblox Studio</button>, un programma gratuito, e si programmano con il linguaggio <button type="button" class="term" data-t="lua">Lua</button>.</span></div></div>
+<div class="box"><div class="box-ill"><span class="ill shake">🛠️</span><span>I giochi si creano con <button type="button" class="term" data-t="studio">Roblox Studio</button>, un programma gratuito, e si programmano con <button type="button" class="term" data-t="lua">Luau</button>, il linguaggio derivato da Lua usato da Roblox.</span></div></div>
 <div class="box"><div class="box-ill"><span class="ill">🏢</span><span>La sede dell'azienda è a <b>San Mateo</b>, in California, USA.</span></div></div>
-<div class="box"><div class="box-ill"><span class="ill glow">💸</span><span>Chi crea giochi di successo, può guadagnare veri <button type="button" class="term" data-t="robux">robux</button> che poi andrà a convertire in soldi veri.</span></div></div>
+<div class="box"><div class="box-ill"><span class="ill glow">💸</span><span>I creator idonei possono guadagnare <button type="button" class="term" data-t="robux">Robux</button> e, se rispettano i requisiti del programma DevEx, convertirli in denaro.</span></div></div>
 <div class="box"><div class="box-ill"><span class="ill">🎮</span><span>Titoli come <button type="button" class="term" data-t="brookhaven">Brookhaven</button> e <button type="button" class="term" data-t="bloxfruits">Blox Fruits</button> sono tra i più amati dalla community.</span></div></div>
-<div class="box"><div class="box-ill"><span class="ill">👥</span><span>Roblox ha oltre <b>70 milioni</b> di utenti attivi al giorno in tutto il mondo.</span></div></div>
+<div class="box"><div class="box-ill"><span class="ill">👥</span><span>La piattaforma riunisce una community globale: il numero di utenti attivi varia nel tempo e va sempre accompagnato da una data.</span></div></div>
 <div class="box"><div class="box-ill"><span class="ill shake">🏆</span><span>Ogni anno Roblox organizza i <b>Roblox Innovation Awards</b>, dove vengono premiati i migliori giochi della community.</span></div></div>
+</section>
 
+<section id="quiz" class="view">
+<h2>🧠 Mini-Quiz su Roblox</h2>
+<p>Metti alla prova la tua conoscenza sul mondo di Roblox con queste domande! Sai proprio tutto?</p>
+<div id="quiz-box" class="box" style="padding:18px"></div>
+</section>
+
+<section id="codici" class="view">
+<div class="promo-header" id="promoHeader">
+  <div class="promo-title">
+    <h2>🎁 Bacheca Promo Codes</h2>
+    <p class="promo-subtitle">Qui trovi i codici promozionali da riscattare su Roblox: inseriscili per ottenere oggetti e accessori speciali da usare nei tuoi giochi.</p>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;margin-left:auto;flex:none">
+    <button type="button" id="filterBtn" aria-label="Filtra codici" style="background:var(--bg);border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;font:inherit;font-size:14px;font-weight:700;color:var(--text);cursor:pointer;display:flex;align-items:center;gap:6px;transition:border-color .2s,background .2s">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+      Filtri
+    </button>
+    <div class="search-wrap" id="searchWrap" style="margin-left:0">
+      <input type="text" class="search-input" id="promoSearch" placeholder="Cerca codice, oggetto o mondo..." aria-label="Cerca codice, oggetto o mondo">
+      <button type="button" class="search-clear" id="searchClear" aria-label="Cancella ricerca">×</button>
+      <button type="button" class="search-toggle" id="searchToggle" aria-label="Cerca promo code">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7.5"/><line x1="20.5" y1="20.5" x2="16.35" y2="16.35"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="promo-list" aria-live="polite"></div>
+
+<p id="promo-empty" class="small" style="display:none;text-align:center;padding:18px 0">Nessun codice, oggetto o mondo trovato per questa ricerca 🔍</p>
+
+<div class="redeem-box">
+  <div>
+    <b>Dove si inseriscono i codici?</b>
+    <span class="small" style="display:block">Accedi al tuo account Roblox e vai sulla pagina ufficiale di riscatto.</span>
+  </div>
+  <a class="btn sm" href="https://www.roblox.com/redeem" target="_blank" rel="noopener noreferrer">🔗 Vai su Roblox Redeem</a>
+</div>
 </section>
 
 <section id="social" class="view">
@@ -188,21 +321,45 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:10px 20px 30p
 </div>
 <p class="small" style="text-align:center">Tocca un QR code per ingrandirlo.</p>
 </section>
-
-<!-- DONA START
-<section id="dona" class="view">
-<h2>Dona ❤️</h2>
-<p>Se i nostri video ti piacciono, puoi sostenerci con una piccola donazione. È completamente facoltativa, ma ci aiuta a migliorare il canale: grazie di cuore!</p>
-<div class="kofi-prev">
-<div class="kofi-icon">☕</div>
-<div><b>BloxGame su Ko-fi</b><span class="small">ko-fi.com/bloxgame</span></div>
-</div>
-<p><button type="button" class="term" data-t="kofi">Ko-fi</button> è il sito dove ci sostieni: puoi donare una volta sola o, se vuoi, ogni mese, scegliendo tu l’importo. Niente account obbligatorio, basta una carta o PayPal.</p>
-<a class="btn alt" id="donate" href="https://ko-fi.com/bloxgame" target="_blank" rel="noopener noreferrer">Dona su Ko-fi</a>
-<p class="safe">🔒 Pagamento sicuro gestito da Ko-fi tramite PayPal o carta.</p>
-</section>
-DONA END -->
 </main>
+
+
+<div class="modal" id="filterModal" hidden>
+<div class="mbox" role="dialog" aria-modal="true" style="max-width:380px;text-align:left">
+<button type="button" id="fclose" aria-label="Chiudi" style="position:absolute;top:6px;right:10px;background:none;border:0;color:var(--muted);font-size:28px;cursor:pointer;line-height:1">×</button>
+<p style="font-size:18px;margin:0 0 16px;text-align:center">Filtra Promo Codes</p>
+<div style="margin-bottom:14px">
+<b style="font-size:13px;display:block;margin-bottom:6px;color:var(--muted)">Mondo / Categoria</b>
+<select id="filterWorld" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit;font-size:14px;font-weight:600">
+<option value="">Tutti i mondi</option>
+<option value="Island of Move">Island of Move</option>
+<option value="Mansion of Wonder">Mansion of Wonder</option>
+<option value="Blox Fruits">Blox Fruits</option>
+<option value="Bee Swarm Simulator">Bee Swarm Simulator</option>
+<option value="Shindo Life">Shindo Life</option>
+<option value="Dress To Impress">Dress To Impress</option>
+<option value="Blade Ball">Blade Ball</option>
+<option value="Pet Simulator 99">Pet Simulator 99</option>
+<option value="Toilet Tower Defense">Toilet Tower Defense</option>
+<option value="All Star Tower Defense">All Star Tower Defense</option>
+<option value="Arsenal">Arsenal</option>
+</select>
+</div>
+<div style="margin-bottom:20px">
+<b style="font-size:13px;display:block;margin-bottom:6px;color:var(--muted)">Tipo di Oggetto / Effetto</b>
+<select id="filterType" style="width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit;font-size:14px;font-weight:600">
+<option value="">Tutti i tipi</option>
+<option value="Accessorio Avatar">Accessorio Avatar (Bastone, Zaino, Cappello, Occhiali)</option>
+<option value="Boost & Statistiche">Boost & Statistiche (XP, Reset)</option>
+<option value="Ticket & Monete">Ticket & Monete (Ticket, RELL Coins)</option>
+</select>
+</div>
+<div style="display:flex;gap:10px">
+<button type="button" class="btn alt" id="fapply" style="flex:1">Applica filtri</button>
+<button type="button" class="btn" id="freset" style="background:var(--bg);color:var(--text);border:1px solid var(--line);flex:1">Resetta</button>
+</div>
+</div>
+</div>
 
 <div class="modal" id="modal" hidden>
 <div class="mbox" role="dialog" aria-modal="true">
@@ -247,7 +404,7 @@ DONA END -->
 <div>
 <h2>BloxGame</h2>
 <p class="h">@bloxgame-20</p>
-<p class="n" id="subfullcount">135</p>
+<p class="n" id="subfullcount" aria-live="polite">—</p>
 <p class="lab">Iscritti</p>
 </div>
 </div>
@@ -257,12 +414,13 @@ DONA END -->
 <p id="tdesc"></p>
 </div>
 </div>
-<footer></footer>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
+
 (function(){
-  var views=["home","roblox","social"];
+  var views=["home","roblox","quiz","codici","social"];
   function show(){
     var h=(location.hash||"").slice(1);
     if(views.indexOf(h)<0)h="home";
@@ -379,10 +537,10 @@ DONA END -->
 </script>
 <script>
 (function(){
-  var ISCRITTI=135;
+  var ISCRITTI=null;
   var SCRIPT_URL="https://script.google.com/macros/s/AKfycbz2e6vT1nNzo7TDJ0JBGDBGcZxlvhAvfCUx_HBYHg9-DCyx3zr7ssTGlFgzWHb4CwUgMQ/exec";
   function fmt(n){return n.toLocaleString("it-IT");}
-  var _prevText={subcount:"135",subfullcount:"135"};
+  var _prevText={subcount:"—",subfullcount:"—"};
   function cubeFlip(el,newText,sali){
     var id=el.id||"el";
     var oldText=_prevText[id]||"0";
@@ -429,9 +587,12 @@ DONA END -->
   var sfEl=document.getElementById("subfullcount");
   var sf=document.getElementById("subfull");
   function aggiorna(n){
-    var animazione=n!==ISCRITTI;
-    var sali=n>ISCRITTI;
+    if(!Number.isFinite(n)||n<0)return;
+    var primoDato=ISCRITTI===null;
+    var animazione=!primoDato&&n!==ISCRITTI;
+    var sali=!primoDato&&n>ISCRITTI;
     var testo=fmt(n);
+    if(primoDato){_prevText.subcount=testo;_prevText.subfullcount=testo;}
     if(animazione){
       cubeFlip(scEl,testo,sali);
       cubeFlip(sfEl,testo,sali);
@@ -442,10 +603,12 @@ DONA END -->
     ISCRITTI=n;
   }
   function poll(){
-    fetch(SCRIPT_URL).then(function(r){return r.json();}).then(function(d){
-      if(d&&typeof d.subscribers==="number"){aggiorna(d.subscribers);}
-      else{aggiorna(ISCRITTI);}
-    }).catch(function(){aggiorna(ISCRITTI);});
+    fetch(SCRIPT_URL,{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("Risposta non valida");return r.json();}).then(function(d){
+      if(d&&typeof d.subscribers==="number"&&Number.isFinite(d.subscribers)){aggiorna(d.subscribers);}
+    }).catch(function(){
+      var a=document.getElementById("subcount"),b=document.getElementById("subfullcount");
+      if(ISCRITTI===null){a.textContent="N/D";b.textContent="N/D";}
+    });
   }
   poll();
   setInterval(poll,60000);
@@ -455,11 +618,14 @@ DONA END -->
   var speedName=document.getElementById("speedname");
   var speedNames={800:"Piano",400:"Medio",150:"Veloce"};
 
-  document.getElementById("speedlabel").addEventListener("click",function(e){
-    e.stopPropagation();
-    speedMenu.classList.toggle("open");
-    speedCustom.classList.remove("open");
-  });
+  var speedLabel=document.getElementById("speedlabel");
+  if(speedLabel){
+    speedLabel.addEventListener("click",function(e){
+      e.stopPropagation();
+      speedMenu.classList.toggle("open");
+      speedCustom.classList.remove("open");
+    });
+  }
 
   [].forEach.call(document.querySelectorAll(".speedopt"),function(btn){
     btn.addEventListener("click",function(e){
@@ -470,13 +636,13 @@ DONA END -->
       if(ms==="custom"){
         speedCustom.classList.add("open");
         speedName.textContent="";
-        document.getElementById("speedlabel").style.display="none";
+        if(speedLabel)speedLabel.style.display="none";
       }else{
         speedCustom.classList.remove("open");
         var val=parseInt(ms,10);
         document.documentElement.style.setProperty("--cube-dur",val+"ms");
         speedName.textContent=speedNames[val]||val+"ms";
-        document.getElementById("speedlabel").style.display="flex";
+        if(speedLabel)speedLabel.style.display="flex";
         speedMenu.classList.remove("open");
       }
     });
@@ -487,7 +653,7 @@ DONA END -->
     if(val>=50&&val<=5000){
       document.documentElement.style.setProperty("--cube-dur",val+"ms");
       speedName.textContent=val+" ms";
-      document.getElementById("speedlabel").style.display="flex";
+      if(speedLabel)speedLabel.style.display="flex";
       speedMenu.classList.remove("open");
       speedCustom.classList.remove("open");
     }
@@ -497,11 +663,17 @@ DONA END -->
     speedMenu.classList.remove("open");
   });
 
-  document.getElementById("subopen").addEventListener("click",function(){
-    sf.hidden=false;
-    sfEl.textContent=fmt(ISCRITTI);
-  });
-  document.getElementById("subclose").addEventListener("click",function(){sf.hidden=true;});
+  var subOpen=document.getElementById("subopen");
+  if(subOpen){
+    subOpen.addEventListener("click",function(){
+      sf.hidden=false;
+      sfEl.textContent=ISCRITTI===null?"N/D":fmt(ISCRITTI);
+    });
+  }
+  var subClose=document.getElementById("subclose");
+  if(subClose){
+    subClose.addEventListener("click",function(){sf.hidden=true;});
+  }
   document.addEventListener("keydown",function(e){if(e.key==="Escape")sf.hidden=true;});
 })();
 </script>
@@ -514,9 +686,9 @@ DONA END -->
     robux:{n:"Robux",d:"La valuta virtuale ufficiale di Roblox, introdotta nel 2007. Si usa per acquistare oggetti, accessori e funzioni speciali nei giochi. Chi crea giochi popolari può guadagnare Robux e poi convertirli in denaro reale tramite il programma Developer Exchange."},
     devex:{n:"Developer Exchange",d:"Programma lanciato da Roblox nel 2013 che permette ai creatori di convertire i Robux guadagnati dalla loro community in denaro reale. Ha trasformato Roblox in una vera piattaforma di lavoro per molti sviluppatori."},
     adoptme:{n:"Adopt Me!",d:"Uno dei giochi più giocati in assoluto su Roblox. In Adopt Me! i giocatori possono adottare e prendersi cura di animali fantastici, scambiare oggetti rari e costruire la propria casa. Ha raggiunto miliardi di visite sulla piattaforma."},
-    jailbreak:{n:"Jailbreak",d:"Un popolare gioco di Roblox in cui i giocatori scelgono se fare i criminali o la polizia. /i criminali cercano di scappare dalla prigione, rapinare banche e sfuggire agli agenti. Creato da Badimo, è uno dei titoli più longevi e seguiti della piattaforma."},
+    jailbreak:{n:"Jailbreak",d:"Un popolare gioco di Roblox in cui i giocatori scelgono se fare i criminali o la polizia. I criminali cercano di scappare dalla prigione, rapinare banche e sfuggire agli agenti. Creato da Badimo, è uno dei titoli più longevi e seguiti della piattaforma."},
     studio:{n:"Roblox Studio",d:"Il programma gratuito con cui chiunque può creare giochi su Roblox. Funziona su PC e Mac e permette di costruire mondi 3D, aggiungere script e pubblicare le proprie esperienze sulla piattaforma. È lo strumento principale di tutti i creator Roblox."},
-    lua:{n:"Lua",d:"Il linguaggio di programmazione usato in Roblox Studio per scrivere la logica dei giochi. È un linguaggio leggero e relativamente semplice da imparare, nato in Brasile negli anni '90. Roblox usa una versione modificata chiamata Luau."},
+    lua:{n:"Luau",d:"Roblox Studio usa Luau, un linguaggio derivato da Lua e adattato da Roblox per creare la logica delle esperienze."},
     brookhaven:{n:"Brookhaven 🏡RP",d:"Un gioco di ruolo (roleplay) su Roblox dove i giocatori possono vivere una vita virtuale: scegliere una casa, un lavoro, guidare auto e interagire con gli altri. È uno dei giochi di Roblox con più visite di sempre."},
     bloxfruits:{n:"Blox Fruits",d:"Un gioco di avventura su Roblox ispirato all'anime One Piece. I giocatori combattono nemici, acquisiscono poteri speciali mangiando frutti e esplorano un vasto mondo. È uno dei giochi più popolari della piattaforma con miliardi di visite."},
     towerofhell:{n:"Tower of Hell",d:"Un gioco di abilità estrema (obbystacle course) su Roblox. I giocatori devono scalare una torre generata casualmente, evitando ostacoli senza checkpoint. È noto per la sua difficoltà elevata e ha una community molto appassionata."},
@@ -533,10 +705,755 @@ DONA END -->
   [].forEach.call(document.querySelectorAll(".term"),function(b){
     b.addEventListener("click",function(){openTerm(b.dataset.t);});
   });
-  document.getElementById("tclose").addEventListener("click",closeTerm);
-  panel.addEventListener("click",function(e){if(e.target===panel)closeTerm();});
+  var tClose=document.getElementById("tclose");
+  if(tClose){
+    tClose.addEventListener("click",closeTerm);
+  }
+  if(panel){
+    panel.addEventListener("click",function(e){if(e.target===panel)closeTerm();});
+  }
   document.addEventListener("keydown",function(e){if(e.key==="Escape")closeTerm();});
 })();
 </script>
+<script>
+/* Logica Mini-Quiz su Roblox (Fino a 10 domande per difficoltà, senza "Tutte", senza aggiunta domande) */
+(function(){
+  var questions=[
+    // FACILE (10 domande)
+    {
+      q:"In che anno è uscito ufficialmente Roblox al pubblico?",
+      opts:["2004","2006","2009","2012"],
+      ans:1,
+      diff:"facile",
+      info:"Esatto! Dopo la fase beta come DynaBlocks nel 2004, Roblox è stato lanciato ufficialmente nel 2006."
+    },
+    {
+      q:"Come si chiama la valuta virtuale ufficiale di Roblox?",
+      opts:["BloxCoin","Robux","Tix","Gems"],
+      ans:1,
+      diff:"facile",
+      info:"Esatto! I Robux sono stati introdotti nel 2007."
+    },
+    {
+      q:"Come si chiama il famoso gioco di abilità in cui bisogna scalare una torre piena di ostacoli?",
+      opts:["Tower of Hell","Obby Maker","Jump Tower","Cloud Climb"],
+      ans:0,
+      diff:"facile",
+      info:"Esatto! Tower of Hell è uno dei giochi di abilità e parkour più famosi di Roblox."
+    },
+    {
+      q:"Su quale dispositivo è arrivato Roblox per primo dopo i computer?",
+      opts:["Nintendo Switch","Smartphone (iOS e Android)","PlayStation 3","Smart TV"],
+      ans:1,
+      diff:"facile",
+      info:"Esatto! I dispositivi mobili sono stati la prima grande espansione oltre il PC."
+    },
+    {
+      q:"Come si chiama il programma ufficiale per creare giochi su Roblox?",
+      opts:["Roblox Studio","Roblox Maker","Builder 3D","Roblox Editor"],
+      ans:0,
+      diff:"facile",
+      info:"Esatto! Roblox Studio è il programma ufficiale per creare qualsiasi tipo di esperienza."
+    },
+    {
+      q:"Come si chiamavano i blocchi iniziali della primissima versione di Roblox?",
+      opts:["BrickBlocks","DynaBlocks","MegaBricks","RoboBlocks"],
+      ans:1,
+      diff:"facile",
+      info:"Esatto! Prima di chiamarsi Roblox, il progetto si chiamava DynaBlocks."
+    },
+    {
+      q:"Quale iconica bevanda virtuale esiste da sempre su Roblox?",
+      opts:["RobloCola","Bloxy Cola","Robux Drink","Block Soda"],
+      ans:1,
+      diff:"facile",
+      info:"Esatto! La Bloxy Cola è la bevanda virtuale più famosa della piattaforma."
+    },
+    {
+      q:"Qual è l'obiettivo principale della maggior parte dei giochi su Roblox?",
+      opts:["Divertirsi e creare con gli amici","Solo guardare video","Scrivere email","Imparare la matematica"],
+      ans:0,
+      diff:"facile",
+      info:"Esatto! Roblox è nato per connettere le persone attraverso il gioco e la creatività."
+    },
+    {
+      q:"Cosa rappresentava storicamente il 'Tix' su Roblox?",
+      opts:["Una vecchia valuta gratuita guadagnabile ogni giorno","Un tipo di spada","Un errore di sistema","Un cappello raro"],
+      ans:0,
+      diff:"facile",
+      info:"Esatto! I Tickets (Tix) venivano dati ai giocatori giornalmente prima di essere rimossi nel 2016."
+    },
+    {
+      q:"Come si chiamano gli omini personalizzabili che rappresentano i giocatori?",
+      opts:["RobLander","Avatar","BlockMan","SkinBot"],
+      ans:1,
+      diff:"facile",
+      info:"Esatto! Gli Avatar sono i personaggi che i giocatori possono vestire e personalizzare."
+    },
+
+    // MEDIO (10 domande)
+    {
+      q:"Qual era il nome originale di Roblox nel 2004?",
+      opts:["BlockWorld","RoboCraft","DynaBlocks","BrickSim"],
+      ans:2,
+      diff:"medio",
+      info:"Proprio così! Si chiamava DynaBlocks prima di diventare Roblox nel 2005."
+    },
+    {
+      q:"Chi sono i due cofondatori di Roblox?",
+      opts:["David Baszucki ed Erik Cassel","Markus Persson e Jens Bergensten","Steve Jobs e Steve Wozniak","Gabe Newell e Robin Walker"],
+      ans:0,
+      diff:"medio",
+      info:"Giusto! David Baszucki ed Erik Cassel hanno fondato la piattaforma insieme."
+    },
+    {
+      q:"Quale celebre gioco di adozione di animali ha raggiunto miliardi di visite su Roblox?",
+      opts:["Adopt Me!","Jailbreak","Tower of Hell","Brookhaven"],
+      ans:0,
+      diff:"medio",
+      info:"Esatto! Adopt Me! è uno dei giochi più popolari in assoluto sulla piattaforma."
+    },
+    {
+      q:"In quale anno sono stati introdotti ufficialmente i Robux?",
+      opts:["2005","2007","2010","2013"],
+      ans:1,
+      diff:"medio",
+      info:"Esatto! I Robux hanno fatto il loro debutto nel 2007."
+    },
+    {
+      q:"Come si chiama il popolare programma di scambio per sviluppatori?",
+      opts:["DevEx (Developer Exchange)","Creator Pay","RobuxCash","MakerTrade"],
+      ans:0,
+      diff:"medio",
+      info:"Esatto! DevEx permette di convertire i guadagni in valuta reale."
+    },
+    {
+      q:"Quale famoso gioco permette di scegliere tra fare i criminali o la polizia?",
+      opts:["Jailbreak","Brookhaven","Piggy","Blox Fruits"],
+      ans:0,
+      diff:"medio",
+      info:"Esatto! Jailbreak è uno dei giochi d'azione più storici e amati di Roblox."
+    },
+    {
+      q:"In quale anno Roblox è sbarcato sulla console Xbox One?",
+      opts:["2013","2015","2018","2020"],
+      ans:1,
+      diff:"medio",
+      info:"Esatto! La versione per Xbox One è stata lanciata nel 2015."
+    },
+    {
+      q:"Come si chiama il celebre gioco di ruolo basato sulla vita in città?",
+      opts:["Brookhaven 🏡RP","Tower of Hell","BedWars","Hide and Seek"],
+      ans:0,
+      diff:"medio",
+      info:"Esatto! Brookhaven è il gioco di ruolo di cittadina più visitato di sempre."
+    },
+    {
+      q:"Come si chiamano gli storici premi annuali assegnati ai migliori creator di Roblox?",
+      opts:["Bloxy Awards (oggi Roblox Innovation Awards)","Game Creator Gala","Roblox Oscars","Block Awards"],
+      ans:0,
+      diff:"medio",
+      info:"Esatto! Nati come Bloxy Awards, oggi si chiamano Roblox Innovation Awards."
+    },
+    {
+      q:"Quale software precedente avevano creato Baszucki e Cassel nel 1989?",
+      opts:["Interactive Physics","BlockStudio","VirtualEngine","PhysicsMaker"],
+      ans:0,
+      diff:"medio",
+      info:"Esatto! Interactive Physics fu il software di simulazione da cui nacque l'ispirazione per Roblox."
+    },
+
+    // DIFFICILE (10 domande)
+    {
+      q:"In quale città della California si trova la sede principale di Roblox?",
+      opts:["Los Angeles","San Mateo","San Diego","Sacramento"],
+      ans:1,
+      diff:"difficile",
+      info:"Esatto! La sede dell'azienda si trova a San Mateo, in California."
+    },
+    {
+      q:"In che anno è stato lanciato il programma Developer Exchange (DevEx)?",
+      opts:["2011","2013","2015","2017"],
+      ans:1,
+      diff:"difficile",
+      info:"Esatto! Il programma DevEx è stato introdotto nel 2013 per permettere ai creator di convertire i Robux in denaro reale."
+    },
+    {
+      q:"Come si chiama il linguaggio di programmazione utilizzato in Roblox Studio?",
+      opts:["Python","C++","Lua","Java"],
+      ans:2,
+      diff:"difficile",
+      info:"Esatto! Roblox Studio utilizza il linguaggio di scripting Lua (nella versione personalizzata Luau)."
+    },
+    {
+      q:"In quale anno Roblox Corporation è ufficialmente sbarcata in borsa (Wall Street)?",
+      opts:["2018","2019","2021","2023"],
+      ans:2,
+      diff:"difficile",
+      info:"Esatto! La quotazione in borsa è avvenuta nel marzo del 2021."
+    },
+    {
+      q:"Come si chiamava la prima convention ufficiale in presenza organizzata per i fan nel 2011?",
+      opts:["ROBLOX Rally","RobloxCon","BlockFest","Creator World"],
+      ans:0,
+      diff:"difficile",
+      info:"Esatto! Il ROBLOX Rally si tenne a San Francisco nel 2011."
+    },
+    {
+      q:"Quale azienda è stata acquisita da Roblox nel 2023 per potenziare la sua piattaforma social?",
+      opts:["Guilded","Discord","Twitch","Epic Games"],
+      ans:0,
+      diff:"difficile",
+      info:"Esatto! Roblox ha acquisito Guilded nel 2023."
+    },
+    {
+      q:"In quale anno sono stati rimossi definitivamente i Ticket (Tix) dalla piattaforma?",
+      opts:["2014","2016","2018","2020"],
+      ans:1,
+      diff:"difficile",
+      info:"Esatto! I Tix sono stati ritirati nell'aprile del 2016."
+    },
+    {
+      q:"Qual è il nome della versione personalizzata e ottimizzata del linguaggio Lua usata oggi in Roblox?",
+      opts:["Luau","RobloxScript","LuaPlus","FastLua"],
+      ans:0,
+      diff:"difficile",
+      info:"Esatto! Luau è il linguaggio di scripting derivato da Lua sviluppato appositamente per Roblox."
+    },
+    {
+      q:"In quale anno Roblox ha esteso la sua presenza anche sulle console PlayStation?",
+      opts:["2021","2022","2023","2024"],
+      ans:2,
+      diff:"difficile",
+      info:"Esatto! Il supporto ufficiale per PlayStation 4 e 5 è arrivato nell'autunno del 2023."
+    },
+    {
+      q:"Quale mese dell'anno 2006 ha visto il lancio ufficiale e pubblico della piattaforma Roblox?",
+      opts:["Marzo 2006","Settembre 2006","Dicembre 2006","Luglio 2006"],
+      ans:1,
+      diff:"difficile",
+      info:"Esatto! Roblox è stato lanciato ufficialmente al pubblico a settembre 2006."
+    }
+  ];
+
+  var state="start"; // "start", "playing", "result"
+  var currentQuestions=[];
+  var idx=0, score=0, answered=false;
+  var selectedCount=5; // Default iniziale a 5 domande (fino a 10)
+  var selectedDiff="facile"; // Default difficulty (Facile, Medio, Difficile)
+  var box=document.getElementById("quiz-box");
+
+  function getFilteredQuestions(){
+    return questions.filter(function(q){
+      return q.diff === selectedDiff;
+    });
+  }
+
+  function render(){
+    if(!box) return;
+    
+    if(state==="start"){
+      var filtered=getFilteredQuestions();
+      var maxQ=Math.max(1, filtered.length); // Sarà 10 per ciascuna difficoltà
+      if(selectedCount>maxQ) selectedCount=maxQ;
+      if(selectedCount<1) selectedCount=1;
+
+      box.innerHTML = '<div style="text-align:center;padding:10px 0">'
+        + '<p style="font-weight:700;margin-bottom:8px">Seleziona la difficoltà:</p>'
+        + '<div style="display:flex;gap:8px;justify-content:center;margin-bottom:16px;flex-wrap:wrap">'
+        + '<button type="button" class="btn sm" data-diff="facile" style="background:'+(selectedDiff==='facile'?'var(--accent2)':'var(--bg)')+';color:'+(selectedDiff==='facile'?'#fff':'var(--text)')+';border:1.5px solid var(--line)">Facile</button>'
+        + '<button type="button" class="btn sm" data-diff="medio" style="background:'+(selectedDiff==='medio'?'var(--accent2)':'var(--bg)')+';color:'+(selectedDiff==='medio'?'#fff':'var(--text)')+';border:1.5px solid var(--line)">Medio</button>'
+        + '<button type="button" class="btn sm" data-diff="difficile" style="background:'+(selectedDiff==='difficile'?'var(--accent2)':'var(--bg)')+';color:'+(selectedDiff==='difficile'?'#fff':'var(--text)')+';border:1.5px solid var(--line)">Difficile</button>'
+        + '</div>'
+        + '<p style="font-weight:700;margin-bottom:6px">Quante domande vuoi fare? (Max '+maxQ+')</p>'
+        + '<div style="margin:0 auto 18px;max-width:160px">'
+        + '<input type="number" id="q-input" min="1" max="'+maxQ+'" value="'+selectedCount+'" style="width:100%;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit;font-size:16px;font-weight:700;text-align:center">'
+        + '</div>'
+        + '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">'
+        + '<button type="button" class="btn alt" id="q-start-btn">▶ Inizia Test</button>'
+        + '</div>'
+        + '</div>';
+
+      [].forEach.call(box.querySelectorAll("[data-diff]"), function(btn){
+        btn.addEventListener("click", function(){
+          selectedDiff=btn.dataset.diff;
+          var f=getFilteredQuestions();
+          if(selectedCount>f.length) selectedCount=f.length;
+          render();
+        });
+      });
+
+      var numInput=document.getElementById("q-input");
+      if(numInput){
+        numInput.addEventListener("input", function(){
+          var val=parseInt(numInput.value,10);
+          if(!isNaN(val)) selectedCount=val;
+        });
+      }
+
+      var startBtn=document.getElementById("q-start-btn");
+      if(startBtn){
+        startBtn.addEventListener("click", function(){
+          var numInput=document.getElementById("q-input");
+          if(numInput){
+            var val=parseInt(numInput.value,10);
+            if(!isNaN(val)) selectedCount=val;
+          }
+          if(selectedCount<1) selectedCount=1;
+          if(selectedCount>filtered.length) selectedCount=filtered.length;
+          var copy=[].concat(filtered);
+          currentQuestions=copy.slice(0, selectedCount);
+          idx=0;
+          score=0;
+          answered=false;
+          state="playing";
+          render();
+        });
+      }
+      return;
+    }
+
+    if(state==="result" || idx>=currentQuestions.length){
+      var total=currentQuestions.length;
+      var msg=score===total?"🏆 Sei un vero esperto di Roblox!":score>=Math.ceil(total/2)?"👏 Ottimo risultato! Conosci molto bene Roblox.":"📚 Hai fatto solo "+score+" risposte giuste! Ti consigliamo di andare a ripassare nella sezione Storia di Roblox.";
+      var extraBtn=score<=Math.floor(total/2)?'<a class="btn" href="#roblox" style="background:var(--accent)">📚 Vai a ripassare la Storia di Roblox</a> ':'';
+      box.innerHTML = '<div class="quiz-res">'
+        + '<div style="font-weight:700;color:var(--muted)">Quiz completato!</div>'
+        + '<div class="score">'+score+' / '+total+'</div>'
+        + '<p style="margin:0 0 18px;font-weight:700">'+msg+'</p>'
+        + '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">'
+        + extraBtn
+        + '<button type="button" class="btn alt" id="q-restart">🔄 Scegli nuove impostazioni</button>'
+        + '</div>'
+        + '</div>';
+      var restartBtn=document.getElementById("q-restart");
+      if(restartBtn){
+        restartBtn.addEventListener("click", function(){
+          state="start";
+          render();
+        });
+      }
+      return;
+    }
+
+    var item=currentQuestions[idx];
+    answered=false;
+    var html = '<div class="quiz-head" style="display:flex;justify-content:space-between;align-items:center">'
+      + '<span>Domanda '+(idx+1)+' di '+currentQuestions.length+'</span>'
+      + '<div style="display:flex;align-items:center;gap:12px">'
+      + '<span>Punteggio: '+score+'</span>'
+      + '<button type="button" class="btn sm" id="q-terminate" style="background:var(--accent);padding:4px 10px;font-size:12px">Termina test</button>'
+      + '</div>'
+      + '</div>'
+      + '<p class="quiz-q">'+item.q+'</p>'
+      + '<div class="quiz-opts">';
+    item.opts.forEach(function(opt,i){
+      html += '<button type="button" class="qopt" data-i="'+i+'">'+opt+'</button>';
+    });
+    html += '</div><div class="quiz-fb" id="q-fb"></div>'
+      + '<div style="margin-top:12px;text-align:right"><button type="button" class="btn alt sm" id="q-next" style="display:none">'+(idx===currentQuestions.length-1?'Vedi risultato':'Prossima domanda ➔')+'</button></div>';
+    box.innerHTML=html;
+
+    var termBtn=document.getElementById("q-terminate");
+    if(termBtn){
+      termBtn.addEventListener("click", function(){
+        state="result";
+        render();
+      });
+    }
+
+    var btns=box.querySelectorAll(".qopt");
+    var fb=document.getElementById("q-fb");
+    var nextBtn=document.getElementById("q-next");
+
+    [].forEach.call(btns, function(b){
+      b.addEventListener("click", function(){
+        if(answered) return;
+        answered=true;
+        var chosen=parseInt(b.dataset.i,10);
+        [].forEach.call(btns, function(other,oi){
+          other.disabled=true;
+          if(oi===item.ans) other.classList.add("ok");
+        });
+        if(chosen===item.ans){
+          score++;
+          fb.style.color="#1fa855";
+          fb.textContent="✅ "+item.info;
+        }else{
+          b.classList.add("no");
+          fb.style.color="var(--accent)";
+          fb.textContent="❌ Risposta errata! La risposta giusta era: "+item.opts[item.ans]+".";
+        }
+        nextBtn.style.display="inline-block";
+      });
+    });
+
+    if(nextBtn){
+      nextBtn.addEventListener("click", function(){
+        idx++;
+        render();
+      });
+    }
+  }
+  render();
+})();
+
+
+/* Logica Copia Promo Codes, Ricerca con Animazione, Generatore Giornaliero (10 codici realistici) & Cubo 3D Interattivo */
+(function(){
+  function copyText(text,onSuccess){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(onSuccess,function(){
+        var ta=document.createElement("textarea");
+        ta.value=text;document.body.appendChild(ta);ta.select();
+        try{document.execCommand("copy");}catch(e){}
+        document.body.removeChild(ta);onSuccess();
+      });
+    }else{
+      var ta=document.createElement("textarea");
+      ta.value=text;document.body.appendChild(ta);ta.select();
+      try{document.execCommand("copy");}catch(e){}
+      document.body.removeChild(ta);onSuccess();
+    }
+  }
+
+  /* Barra di ricerca con animazione verso sinistra */
+  var header=document.getElementById("promoHeader");
+  var wrap=document.getElementById("searchWrap");
+  var input=document.getElementById("promoSearch");
+  var toggle=document.getElementById("searchToggle");
+  var clearBtn=document.getElementById("searchClear");
+  var emptyMsg=document.getElementById("promo-empty");
+
+  function filterCodes(){
+    if(!input)return;
+    var q=input.value.trim().toLowerCase();
+    if(wrap)wrap.classList.toggle("has-text",q.length>0);
+    var cards=document.querySelectorAll("#promo-list .code-card");
+    var visibleCount=0;
+    var visibleGameCodes=0;
+    var gamesTitle=document.getElementById("promo-games-title");
+    [].forEach.call(cards,function(card){
+      var hay=(card.dataset.search+" "+card.textContent).toLowerCase();
+      var match=!q||hay.indexOf(q)!==-1;
+      card.style.display=match?"flex":"none";
+      if(match){
+        visibleCount++;
+        if(card.dataset.type==="world")visibleGameCodes++;
+      }
+    });
+    if(gamesTitle)gamesTitle.style.display=visibleGameCodes>0?"block":"none";
+    if(emptyMsg)emptyMsg.style.display=visibleCount===0?"block":"none";
+  }
+
+  if(toggle){
+    toggle.addEventListener("click",function(e){
+      e.stopPropagation();
+      var isOpen=wrap.classList.contains("open");
+      if(!isOpen){
+        wrap.classList.add("open");
+        if(header)header.classList.add("searching");
+        setTimeout(function(){if(input)input.focus();},120);
+      }else if(!input.value.trim()){
+        wrap.classList.remove("open");
+        if(header)header.classList.remove("searching");
+      }else{
+        if(input)input.focus();
+      }
+    });
+  }
+
+  if(clearBtn){
+    clearBtn.addEventListener("click",function(e){
+      e.stopPropagation();
+      if(input){input.value="";}
+      filterCodes();
+      if(input){input.focus();}
+    });
+  }
+
+  if(input){
+    input.addEventListener("input",filterCodes);
+    input.addEventListener("keydown",function(e){
+      if(e.key==="Escape"){
+        input.value="";
+        filterCodes();
+        if(wrap)wrap.classList.remove("open");
+        if(header)header.classList.remove("searching");
+      }
+    });
+  }
+
+  function getDailyCodes(){
+    var allCodes = [
+      {code:"DIY",title:"Kinetic Staff",world:"Island of Move",
+       desc:"Un accessorio a forma di bastone dal look dinamico, pensato per completare avatar sportivi e avventurosi.",
+       use:"A cosa serve: sblocca gratuitamente il bastone estetico (accessorio schiena) per personalizzare il tuo avatar in tutti i giochi Roblox.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (oggetto permanente)",type:"world",status:"Attivo"},
+      {code:"SETTINGTHESTAGE",title:"Build It Backpack",world:"Island of Move",
+       desc:"Uno zaino ispirato al mondo della costruzione: un accessorio pratico per dare al tuo avatar uno stile da creativo.",
+       use:"A cosa serve: aggiunge uno zaino gratuito al tuo inventario per decorare la schiena del tuo personaggio.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (oggetto permanente)",type:"world",status:"Attivo"},
+      {code:"GETMOVING",title:"Speedy Shades",world:"Island of Move",
+       desc:"Un paio di occhiali da sole dal carattere sportivo, perfetti per un look casual e pieno di energia.",
+       use:"A cosa serve: regala un paio di occhiali da sole estetici da indossare sul viso del tuo avatar.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (oggetto permanente)",type:"world",status:"Attivo"},
+      {code:"STRIKEAPOSE",title:"Hustle Hat",world:"Island of Move",
+       desc:"Un cappello dal gusto streetwear che aggiunge un tocco urbano e deciso all’abbigliamento del tuo avatar.",
+       use:"A cosa serve: sblocca un cappellino gratuito da equipaggiare sulla testa del tuo personaggio.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (oggetto permanente)",type:"world",status:"Attivo"},
+      {code:"VICTORYLAP",title:"Cardio Cans",world:"Island of Move",
+       desc:"Un originale accessorio per la testa decorato con due lattine, ideale per un outfit divertente e fuori dal comune.",
+       use:"A cosa serve: aggiunge delle cuffie con lattine gratuite per personalizzare la testa del tuo avatar.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (oggetto permanente)",type:"world",status:"Attivo"},
+      {code:"WORLDALIVE",title:"Crystalline Companion",world:"Island of Move",
+       desc:"Un piccolo compagno dall’aspetto cristallino da portare sulla spalla: un dettaglio brillante per il tuo avatar.",
+       use:"A cosa serve: sblocca una mascotte di cristallo gratuita da posizionare sulla spalla del tuo personaggio.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (oggetto permanente)",type:"world",status:"Attivo"},
+      {code:"BOARDWALK",title:"Ring of Flames",world:"Mansion of Wonder",
+       desc:"Un vistoso effetto ad anello avvolto dalle fiamme, perfetto per rendere più scenico e grintoso il tuo personaggio.",
+       use:"A cosa serve: sblocca un'aura di fiamme gratuita da indossare intorno alla vita del tuo avatar.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (oggetto permanente)",type:"world",status:"Attivo"},
+      {code:"FXARTIST",title:"Artist Backpack",world:"Mansion of Wonder",
+       desc:"Uno zaino ispirato all’arte e alla creatività, pensato per dare al tuo avatar un tocco da artista.",
+       use:"A cosa serve: aggiunge gratuitamente uno zaino a tema pittura nell'inventario del tuo avatar.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (oggetto permanente)",type:"world",status:"Attivo"},
+      {code:"GLIMMER",title:"Head Slime",world:"Mansion of Wonder",
+       desc:"Un buffo accessorio effetto slime da indossare sulla testa, con un aspetto morbido e colorato che si fa notare.",
+       use:"A cosa serve: regala un cappello a forma di slime verde da equipaggiare sulla testa.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (oggetto permanente)",type:"world",status:"Attivo"},
+      {code:"PARTICLEWIZARD",title:"Tome of the Magus",world:"Mansion of Wonder",
+       desc:"Un tomo dall’aspetto magico, come un antico libro di incantesimi, per completare un outfit fantasy.",
+       use:"A cosa serve: sblocca un libro magico fluttuante da portare sulla spalla del tuo personaggio.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (oggetto permanente)",type:"world",status:"Attivo"},
+      {code:"THINGSGOBOOM",title:"Ghastly Aura",world:"Mansion of Wonder",
+       desc:"Un effetto alone spettrale e misterioso da applicare alla cintura per un look unico.",
+       use:"A cosa serve: aggiunge un'aura spettrale gratuita intorno alla vita del tuo avatar.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (oggetto permanente)",type:"world",status:"Attivo"},
+      {code:"SUB2GAMERROBOT_EXP1",title:"2x EXP per 30 Minuti",world:"Blox Fruits",
+       desc:"Raddoppia l'esperienza guadagnata per 30 minuti di gioco: ideale per salire di livello velocemente.",
+       use:"A cosa serve: ti fa guadagnare il doppio dei punti esperienza per 30 minuti, aiutandoti a livellare molto più in fretta.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (monouso)",type:"world",status:"Attivo"},
+      {code:"SUB2GAMERROBOT_RESET1",title:"Reset Statistiche Gratuito",world:"Blox Fruits",
+       desc:"Permette di azzerare e ridistribuire da zero tutti i punti statistica del tuo personaggio.",
+       use:"A cosa serve: azzera i punti abilità (Mischia, Difesa, Spada, Pistola, Frutto) così puoi riassegnarli come preferisci senza spendere Frammenti.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (riutilizzabile ai futuri aggiornamenti)",type:"world",status:"Attivo"},
+      {code:"KITT_RESET",title:"Reset Statistiche",world:"Blox Fruits",
+       desc:"Un altro codice ufficiale per resettare gratuitamente le statistiche di combattimento.",
+       use:"A cosa serve: ti consente di ricalcolare gratuitamente tutte le statistiche del personaggio per cambiare stile di combattimento.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (monouso)",type:"world",status:"Attivo"},
+      {code:"SUB2NOOBMASTER123",title:"2x EXP per 20 Minuti",world:"Blox Fruits",
+       desc:"Attiva il moltiplicatore di esperienza x2 per 20 minuti mentre affronti missioni e boss.",
+       use:"A cosa serve: raddoppia l'EXP ricevuta dalle missioni e dai nemici per 20 minuti.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (monouso)",type:"world",status:"Attivo"},
+      {code:"38217",title:"5 Ticket Gratuiti",world:"Bee Swarm Simulator",
+       desc:"Codice storico del gioco che regala subito 5 Ticket da spendere nel negozio del gioco.",
+       use:"A cosa serve: aggiunge 5 Ticket utili per comprare api speciali (come Tabby Bee o Photon Bee) e oggetti rari nel Ticket Tent.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"},
+      {code:"Bopmaster",title:"5 Ticket Gratuiti",world:"Bee Swarm Simulator",
+       desc:"Aggiunge 5 Ticket al tuo inventario per acquistare oggetti speciali e uova.",
+       use:"A cosa serve: ti regala 5 Ticket extra per sbloccare ricompense e potenziamenti nel negozio.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"},
+      {code:"Cog",title:"5 Ticket Gratuiti",world:"Bee Swarm Simulator",
+       desc:"Un altro codice classico sempre attivo per ottenere 5 Ticket extra per il tuo alveare.",
+       use:"A cosa serve: fornisce 5 Ticket da accumulare per acquistare uova d'oro, Royal Jelly o api evento.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"},
+      {code:"Connoisseur",title:"5 Ticket Gratuiti",world:"Bee Swarm Simulator",
+       desc:"Riscatta questo codice nel menu ingranaggi del gioco per ricevere 5 Ticket.",
+       use:"A cosa serve: aumenta la tua scorta di Ticket per accelerare i progressi del tuo alveare.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"},
+      {code:"RELLgems!",title:"10.000 RELL Coins",world:"Shindo Life",
+       desc:"Fornisce una buona scorta di RELL Coins da usare nello shop per sbloccare abilità e skin.",
+       use:"A cosa serve: ti dà 10.000 RELL Coins per acquistare Bloodline, elementi e personalizzazioni nel negozio del gioco.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"},
+      {code:"BigManTings!",title:"Spins & RELL Coins",world:"Shindo Life",
+       desc:"Codice ufficiale degli sviluppatori per ottenere giri (Spins) extra e monete.",
+       use:"A cosa serve: ti permette di girare la ruota per ottenere nuove Bloodline rare e ricevere RELL Coins aggiuntive.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"},
+      {code:"LANA",title:"Completo Bianco & Scaldamuscoli",world:"Dress To Impress",
+       desc:"Sblocca un outfit composto da top, pantaloncini e scaldamuscoli bianchi firmati Lana.",
+       use:"A cosa serve: aggiunge permanentemente un completo bianco esclusivo nel tuo camerino per le sfilate a tema.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (oggetto permanente)",type:"world",status:"Attivo"},
+      {code:"LEAHASHE",title:"Felpa & Pantaloni Sportivi",world:"Dress To Impress",
+       desc:"Aggiunge al tuo guardaroba una tuta sportiva completa ispirata la creator Leah Ashe.",
+       use:"A cosa serve: sblocca una tuta sportiva casual da indossare durante le sfide di moda.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (oggetto permanente)",type:"world",status:"Attivo"},
+      {code:"GIVEAFISH",title:"Free Sword Skin",world:"Blade Ball",
+       desc:"Un codice speciale per sbloccare una skin esclusiva per la spada in Blade Ball.",
+       use:"A cosa serve: aggiunge una skin gratuita per la spada nel tuo inventario di gioco.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"},
+      {code:"WEEK4",title:"Free Spin & Rewards",world:"Blade Ball",
+       desc:"Giri gratuiti e ricompense per avanzare più velocemente nelle modalità di Blade Ball.",
+       use:"A cosa serve: sblocca giri e oggetti utili per personalizzare il tuo equipaggiamento.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"},
+      {code:"pet99",title:"Free Gifts & Boosts",world:"Pet Simulator 99",
+       desc:"Pezzi di potenziamento e oggetti utili per iniziare al meglio in Pet Simulator 99.",
+       use:"A cosa serve: ti regala boost di velocità e oggetti per potenziare i tuoi animali domestici.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"},
+      {code:"speakerup",title:"Free Speaker Unit",world:"Toilet Tower Defense",
+       desc:"Un'unità speciale a tema altoparlante per difendere la tua base da ondate di nemici.",
+       use:"A cosa serve: sblocca un'unità esclusiva per la tua squadra nel gioco di torre difesa.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"},
+      {code:"newupdate",title:"Gems & Rewards",world:"All Star Tower Defense",
+       desc:"Gemme gratuite da spendere per evocare i tuoi personaggi anime preferiti.",
+       use:"A cosa serve: ti fornisce gemme utili per evocare unità potenti e superare i livelli più difficili.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"},
+      {code:"bloxy",title:"Free Announcer Voice / Skin",world:"Arsenal",
+       desc:"Codice classico per sbloccare skin e contenuti cosmetici nel celebre sparatutto Arsenal.",
+       use:"A cosa serve: personalizza il tuo equipaggiamento e il tuo personaggio con oggetti esclusivi.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"},
+      {code:"IBELLASLAY",title:"Acconciatura Codini",world:"Dress To Impress",
+       desc:"Sblocca un'acconciatura esclusiva con codini lunghi da usare durante le sfilate.",
+       use:"A cosa serve: rende disponibile una nuova pettinatura speciale per personalizzare il look della tua modella.",
+       uses:"Quante volte si può utilizzare: 1 sola volta per account (oggetto permanente)",type:"world",status:"Attivo"}
+    
+      ,{code:"ADMINGIVEAWAY",title:"Free Rewards",world:"Pet Simulator 99",desc:"Codice per ottenere oggetti gratuiti e pozioni nel gioco.",use:"A cosa serve: sblocca pozioni e oggetti utili per il farming.",uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"}
+      ,{code:"XBOX",title:"Free Bird Says Aerobics Hat",world:"Roblox Hub",desc:"Classico codice promozionale globale per un cappello esclusivo.",use:"A cosa serve: sblocca un cappello sportivo per l'avatar.",uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"}
+      ,{code:"TWEETROBLOX",title:"The Bird Says The Bird",world:"Roblox Hub",desc:"Accessorio Twitter da spalla per il tuo avatar.",use:"A cosa serve: aggiunge un uccellino azzurro sulla spalla del personaggio.",uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"}
+      ,{code:"SPIDERCOLA",title:"Spider Cola Shoulder Pet",world:"Roblox Hub",desc:"Un ragno lattina da mettere sulla spalla.",use:"A cosa serve: sblocca l'accessorio spalla Spider Cola.",uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"}
+      ,{code:"PEACE",title:"Peace Hat",world:"Island of Move",desc:"Cappello speciale di Island of Move.",use:"A cosa serve: sblocca un cappello a tema.",uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"}
+      ,{code:"CHAMPIONS",title:"Speedy Shades",world:"Island of Move",desc:"Occhiali sportivi aggiuntivi.",use:"A cosa serve: accessorio per il viso del personaggio.",uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"}
+      ,{code:"ADMIN_RESET",title:"Stat Reset",world:"Blox Fruits",desc:"Reset aggiuntivo delle statistiche per Blox Fruits.",use:"A cosa serve: azzera e ridistribuisce i punti.",uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"}
+      ,{code:"NOOB_EXP",title:"2x EXP Boost",world:"Blox Fruits",desc:"Boost di esperienza extra.",use:"A cosa serve: raddoppia l'esperienza per 20 minuti.",uses:"Quante volte si può utilizzare: 1 sola volta per account",type:"world",status:"Attivo"}
+    ];
+    
+    // Automatic daily rotation at midnight: select exactly 10 codes based on day count
+    var now = new Date();
+    var dayIndex = Math.floor(now.getTime() / (1000 * 60 * 60 * 24));
+    var rotated = [];
+    for(var i=0; i<10; i++){
+      var idx = (dayIndex * 3 + i) % allCodes.length;
+      rotated.push(allCodes[idx]);
+    }
+    return { objects: [], worlds: rotated };
+  }
+
+  var daily=getDailyCodes();
+  var promoList=document.getElementById("promo-list");
+  var ALL_ITEMS={};
+
+  function renderPromoList(){
+    if(!promoList)return;
+    var html="";
+    daily.objects.concat(daily.worlds).forEach(function(item){
+      ALL_ITEMS[item.code.toLowerCase()]=item;
+      var isWorld=item.type==="world";
+      html+='<div class="code-card" '+(isWorld?'data-type="world" ':'')+'data-search="'+item.code.toLowerCase()+' '+item.title.toLowerCase()+' '+item.desc.toLowerCase()+' '+(item.world||'')+'">'
+        +'<div class="code-info">'
+        +'<span class="code-tag">'+item.code+'</span>'
+        +'<span class="code-title">'+item.title+'</span>'
+        +'<span class="code-world">'+(item.world||'Roblox')+'</span>'
+        +'<span class="code-desc">'+item.desc+'</span>'
+        +(item.use?'<span class="code-use">'+item.use+'</span>':'')
+        +(item.uses?'<span class="code-uses">'+item.uses+'</span>':'')
+        +'</div>'
+        +'<button type="button" class="copy-btn" data-code="'+item.code+'">Copia</button>'
+        +'</div>';
+    });
+    promoList.innerHTML=html;
+    bindPromoEvents();
+  }
+
+  function bindPromoEvents(){
+    if(!promoList)return;
+    [].forEach.call(promoList.querySelectorAll(".copy-btn"),function(btn){
+      btn.addEventListener("click",function(){
+        var code=btn.dataset.code;
+        copyText(code,function(){
+          btn.textContent="✓ Copiato!";
+          btn.classList.add("copied");
+          setTimeout(function(){
+            btn.textContent="Copia";
+            btn.classList.remove("copied");
+          },2000);
+        });
+      });
+    });
+  }
+
+  renderPromoList();
+})();
+</script>
+<script>
+(function(){
+  var fModal = document.getElementById("filterModal");
+  var fBtn = document.getElementById("filterBtn");
+  var fClose = document.getElementById("fclose");
+  var fApply = document.getElementById("fapply");
+  var fReset = document.getElementById("freset");
+  var fWorld = document.getElementById("filterWorld");
+  var fType = document.getElementById("filterType");
+
+  if(fBtn && fModal){
+    fBtn.addEventListener("click", function(){
+      fModal.hidden = false;
+    });
+  }
+  if(fClose && fModal){
+    fClose.addEventListener("click", function(){
+      fModal.hidden = true;
+    });
+  }
+  if(fModal){
+    fModal.addEventListener("click", function(e){
+      if(e.target === fModal) fModal.hidden = true;
+    });
+  }
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape" && fModal) fModal.hidden = true;
+  });
+
+  if(fReset){
+    fReset.addEventListener("click", function(){
+      if(fWorld) fWorld.value = "";
+      if(fType) fType.value = "";
+      applyFilters();
+      if(fModal) fModal.hidden = true;
+    });
+  }
+
+  if(fApply){
+    fApply.addEventListener("click", function(){
+      applyFilters();
+      if(fModal) fModal.hidden = true;
+    });
+  }
+
+  function applyFilters(){
+    var selWorld = fWorld ? fWorld.value.trim().toLowerCase() : "";
+    var selType = fType ? fType.value.trim().toLowerCase() : "";
+    var cards = document.querySelectorAll("#promo-list .code-card");
+    var visibleCount = 0;
+
+    [].forEach.call(cards, function(card){
+      var worldText = (card.querySelector(".code-world") ? card.querySelector(".code-world").textContent : "").toLowerCase();
+      var descText = (card.querySelector(".code-desc") ? card.querySelector(".code-desc").textContent : "").toLowerCase();
+
+      var matchWorld = !selWorld || worldText.indexOf(selWorld) !== -1;
+      
+      var matchType = true;
+      if(selType){
+        if(selType.indexOf("accessorio") !== -1){
+          matchType = descText.indexOf("accessorio") !== -1 || descText.indexOf("zaino") !== -1 || descText.indexOf("cappello") !== -1 || descText.indexOf("occhiali") !== -1 || descText.indexOf("bastone") !== -1 || descText.indexOf("mascotte") !== -1 || descText.indexOf("acconciatura") !== -1 || descText.indexOf("felpa") !== -1 || descText.indexOf("completo") !== -1;
+        } else if(selType.indexOf("boost") !== -1){
+          matchType = descText.indexOf("exp") !== -1 || descText.indexOf("esperienza") !== -1 || descText.indexOf("reset") !== -1 || descText.indexOf("statistiche") !== -1;
+        } else if(selType.indexOf("ticket") !== -1){
+          matchType = descText.indexOf("ticket") !== -1 || descText.indexOf("rell coins") !== -1 || descText.indexOf("monete") !== -1;
+        }
+      }
+
+      var show = matchWorld && matchType;
+      card.style.display = show ? "flex" : "none";
+      if(show) visibleCount++;
+    });
+
+    var emptyMsg = document.getElementById("promo-empty");
+    if(emptyMsg) emptyMsg.style.display = visibleCount === 0 ? "block" : "none";
+  }
+})();
+</script>
+
+
+
 </body>
 </html>
