@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="BloxGame: video, avventure, curiosità e quiz sul mondo di Roblox. Scopri la storia della piattaforma e consulta i codici promozionali con stato e istruzioni di riscatto.">
-<meta name="theme-color" content="#e2231a">
+<meta name="theme-color" content="#f6f7fb">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
 <meta property="og:title" content="BloxGame – Il canale Roblox">
@@ -28,8 +28,9 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 'Baloo 2',sy
 .cubes i:nth-child(odd){background:linear-gradient(135deg,var(--accent),#ff8a7d);animation-duration:12s;box-shadow:0 8px 16px rgba(226,35,26,.3)}
 @keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-28px) rotate(20deg)}}
 nav,main,header,footer,section{position:relative;z-index:1}
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:2px;justify-content:space-between;flex-wrap:nowrap;padding:8px 6px;overflow-x:auto;background:var(--card);border-bottom:1px solid var(--line)}
-nav a{color:var(--text);text-decoration:none;padding:6px 12px;border-radius:999px;font-weight:600;font-size:14px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:2px;justify-content:space-between;flex-wrap:nowrap;padding:6px 4px;overflow-x:auto;background:var(--card);border-bottom:1px solid var(--line);-webkit-overflow-scrolling:touch}
+nav::-webkit-scrollbar{display:none}
+nav a{color:var(--text);text-decoration:none;padding:6px 6px;border-radius:999px;font-weight:600;font-size:12.5px;white-space:nowrap;flex:none}
 nav a:hover{background:var(--bg)}
 header{text-align:center;padding:56px 20px 40px;position:relative}
 .subbtn{position:absolute;top:14px;left:14px;display:flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px 7px 10px;cursor:pointer;font-weight:700;font-size:14px;color:var(--text)}
