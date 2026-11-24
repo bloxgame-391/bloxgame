@@ -289,6 +289,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   </div>
 </div>
 
+<p id="promo-count" class="small" style="margin: 0 0 14px 4px; font-weight: 700; color: var(--muted);">Codici: —</p>
 <div id="promo-list" aria-live="polite"></div>
 
 <p id="promo-empty" class="small" style="display:none;text-align:center;padding:18px 0">Nessun codice, oggetto o mondo trovato per questa ricerca 🔍</p>
@@ -1378,6 +1379,10 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
         + '</div>';
     });
     promoList.innerHTML = html;
+    var countEl = document.getElementById("promo-count");
+    if(countEl){
+      countEl.textContent = "Codici: " + filtered.length;
+    }
 
     if(emptyMsg){
       emptyMsg.style.display = filtered.length === 0 ? "block" : "none";
