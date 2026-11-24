@@ -52,13 +52,13 @@ header{text-align:center;padding:56px 20px 40px;position:relative}
 .subfull svg{width:84px;height:84px}
 .subfull h2{margin:0;font-size:clamp(38px,10vw,64px);letter-spacing:-1px}
 .subfull .h{margin:0;font-size:clamp(18px,4.2vw,26px);color:#aaa}
-.subfull .n{margin:8px 0 0;font-size:clamp(54px,15vw,110px);font-weight:800;font-variant-numeric:tabular-nums}
+.subfull .n{margin:8px 0 0;font-size:clamp(54px,15vw,110px);font-weight:800;font-variant-numeric:tabular-nums;line-height:1;display:inline-flex;align-items:center;justify-content:center}
 .subfull .lab{margin:0;font-size:18px;color:#aaa;text-transform:uppercase;letter-spacing:1px}
 #subclose{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.12);border:0;color:#fff;width:40px;height:40px;border-radius:50%;font-size:24px;cursor:pointer;line-height:1}
 
-.cube-wrap{display:inline-block;overflow:hidden;vertical-align:baseline;min-width:0.62em;text-align:center}
-.cube-inner{display:flex;flex-direction:column;transition:transform var(--cube-dur) cubic-bezier(.4,0,.2,1);-webkit-font-smoothing:antialiased;backface-visibility:hidden;transform:translateZ(0)}
-.cube-inner span{display:block;white-space:pre}
+.cube-wrap{display:inline-block;overflow:hidden;vertical-align:top;min-width:0.62em;text-align:center}
+.cube-inner{display:flex;flex-direction:column;transition:transform var(--cube-dur) cubic-bezier(.4,0,.2,1);will-change:transform;-webkit-font-smoothing:antialiased;backface-visibility:hidden}
+.cube-inner span,.cube-static{display:flex;align-items:center;justify-content:center;white-space:pre}
 @media (prefers-reduced-motion:reduce){.cube-inner{transition:none}}
 @media (orientation:landscape){.subfull{flex-direction:column;gap:14px}.subfull svg{width:64px;height:64px}.subfull h2{font-size:clamp(28px,6vw,48px)}.subfull .h{font-size:clamp(14px,3vw,22px)}.subfull .n{font-size:clamp(44px,12vw,90px);margin-top:0}.subfull .lab{font-size:16px}}
 header h1{font-size:clamp(34px,8vw,60px);margin:0 0 8px;letter-spacing:-1px;text-shadow:3px 3px 0 var(--accent2)}
@@ -88,7 +88,7 @@ h2{margin:0 0 14px;font-size:26px}
 .box{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 12px}
 .box b{color:var(--accent)}
 h3{margin:24px 0 10px;font-size:20px}
-.btn.wa{background:#1fa855}
+.btn.wa{background:#178a44}
 .view{display:none}
 .feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;max-width:820px;margin:32px auto 0;text-align:left}
 .feat div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}
@@ -129,7 +129,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 .qopt{background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:12px 16px;text-align:left;font:inherit;font-weight:700;color:var(--text);cursor:pointer;transition:all .15s}
 .qopt:hover:not(:disabled){border-color:var(--accent2);transform:translateY(-1px)}
 .qopt:disabled{cursor:default}
-.qopt.ok{background:rgba(31,168,85,.15);border-color:#1fa855;color:#1fa855}
+.qopt.ok{background:rgba(31,168,85,.15);border-color:#178a44;color:#178a44}
 .qopt.no{background:rgba(226,35,26,.15);border-color:var(--accent);color:var(--accent)}
 .quiz-fb{margin-top:14px;font-weight:700;min-height:24px}
 .quiz-res{text-align:center;padding:12px 0}
@@ -167,7 +167,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 .code-tag{display:inline-flex;align-items:center;gap:6px;background:transparent;border:0;color:var(--text);font-family:inherit;font-weight:700;font-size:16px;padding:0;margin-bottom:4px;cursor:default;word-break:break-all}
 .copy-btn{flex:none;background:var(--accent2);color:#fff;border:0;border-bottom:3px solid rgba(0,0,0,.25);border-radius:10px;padding:9px 14px;font:inherit;font-weight:800;font-size:14px;cursor:pointer;transition:transform .1s;min-width:86px}
 .copy-btn:active{transform:translateY(2px);border-bottom-width:1px}
-.copy-btn.copied{background:#1fa855}
+.copy-btn.copied{background:#178a44}
 .redeem-box{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 .skip-link{position:absolute;left:12px;top:-60px;z-index:100;background:var(--card);color:var(--text);padding:10px 14px;border:2px solid var(--accent2);border-radius:10px}.skip-link:focus{top:12px}
@@ -224,7 +224,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 </div>
 <div class="cta">
 <a class="btn alt" href="#roblox">📚 Storia di Roblox</a>
-<a class="btn" href="#quiz" style="background:#1fa855">🧠 Gioca al Mini-Quiz</a>
+<a class="btn" href="#quiz" style="background:#178a44">🧠 Gioca al Mini-Quiz</a>
 <a class="btn alt" href="#codici">🎁 Promo Codes</a>
 </div>
 </header>
@@ -375,7 +375,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 </div>
 </div>
 
-<div class="subfull" id="subfull" hidden>
+<div class="subfull" id="subfull" hidden role="dialog" aria-modal="true">
 <div class="speedctrl" id="speedctrl">
 <div class="speedlabel" id="speedlabel">Velocità: <span id="speedname">Medio</span></div>
 <div class="speedmenu" id="speedmenu">
@@ -445,7 +445,6 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   });
   modal.addEventListener("click",function(e){if(e.target===modal)close();});
   document.getElementById("mclose").addEventListener("click",close);
-  document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
   function copy(){
     if(navigator.clipboard&&navigator.clipboard.writeText){
       navigator.clipboard.writeText(cur.url).then(function(){msg.textContent="Link copiato!";},function(){msg.textContent=cur.url;});
@@ -501,8 +500,10 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     if(!cur.app)return;
     e.preventDefault();
     var url=cur.url,done=false;
-    document.addEventListener("visibilitychange",function(){if(document.hidden)done=true;},{once:true});
+    var visHandler=function(){if(document.hidden)done=true;};
+    document.addEventListener("visibilitychange",visHandler,{once:true});
     setTimeout(function(){
+      document.removeEventListener("visibilitychange",visHandler);
       if(done)return;
       done=true;
       var w=window.open(url,"_blank","noopener,noreferrer");
@@ -511,7 +512,6 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     window.location.href=cur.app;
   });
   document.getElementById("iclose").addEventListener("click",close);
-  document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
   function copy(){
     if(navigator.clipboard&&navigator.clipboard.writeText){
       navigator.clipboard.writeText(cur.url).then(function(){imsg.textContent="Link copiato!";},function(){imsg.textContent=cur.url;});
@@ -530,48 +530,81 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   var SCRIPT_URL="https://script.google.com/macros/s/AKfycbz2e6vT1nNzo7TDJ0JBGDBGcZxlvhAvfCUx_HBYHg9-DCyx3zr7ssTGlFgzWHb4CwUgMQ/exec";
   function fmt(n){return n.toLocaleString("it-IT");}
   var _prevText={subcount:"—",subfullcount:"—"};
+  
   function cubeFlip(el,newText,sali){
     var id=el.id||"el";
     var oldText=_prevText[id]||"0";
     _prevText[id]=newText;
     if(oldText===newText)return;
+
+    var probe=document.createElement("span");
+    probe.style.visibility="hidden";
+    probe.style.position="absolute";
+    probe.style.lineHeight="1";
+    probe.textContent="0";
+    el.appendChild(probe);
+    var h=Math.ceil(probe.getBoundingClientRect().height) || Math.ceil(parseFloat(getComputedStyle(el).fontSize));
+    el.removeChild(probe);
+
     el.innerHTML="";
-    var h=parseFloat(getComputedStyle(el).fontSize)||16;
     var oldPad=oldText;
     var newPad=newText;
     while(oldPad.length<newPad.length)oldPad=" "+oldPad;
     while(newPad.length<oldPad.length)newPad=" "+newPad;
+
     for(var i=0;i<newPad.length;i++){
       var oc=oldPad[i]||" ";
       var nc=newPad[i]||" ";
       var wrap=document.createElement("span");
       wrap.className="cube-wrap";
       wrap.style.height=h+"px";
+      wrap.style.lineHeight=h+"px";
+
       if(oc===nc){
         var s=document.createElement("span");
-        s.style.height=h+"px";s.style.lineHeight=h+"px";s.style.whiteSpace="pre";
+        s.className="cube-static";
+        s.style.height=h+"px";
+        s.style.lineHeight=h+"px";
         s.textContent=nc;
         wrap.appendChild(s);
       } else {
         var inner=document.createElement("span");
         inner.className="cube-inner";
         inner.style.height=(h*2)+"px";
-        var s1=document.createElement("span");s1.style.height=h+"px";s1.style.lineHeight=h+"px";s1.textContent=oc;
-        var s2=document.createElement("span");s2.style.height=h+"px";s2.style.lineHeight=h+"px";s2.textContent=nc;
-        if(sali){inner.appendChild(s2);inner.appendChild(s1);inner.style.transform="translateY(-50%)";}
-        else{inner.appendChild(s1);inner.appendChild(s2);}
+
+        var s1=document.createElement("span");
+        s1.style.height=h+"px";
+        s1.style.lineHeight=h+"px";
+        s1.textContent=oc;
+
+        var s2=document.createElement("span");
+        s2.style.height=h+"px";
+        s2.style.lineHeight=h+"px";
+        s2.textContent=nc;
+
+        if(sali){
+          inner.appendChild(s2);
+          inner.appendChild(s1);
+          inner.style.transform="translate3d(0,-"+h+"px,0)";
+        } else {
+          inner.appendChild(s1);
+          inner.appendChild(s2);
+          inner.style.transform="translate3d(0,0,0)";
+        }
+
         wrap.appendChild(inner);
-        (function(inn,up){
+
+        (function(inn,up,heightPx){
+          inn.getBoundingClientRect();
           requestAnimationFrame(function(){
-            requestAnimationFrame(function(){
-              inn.style.transform=up?"translateY(0)":"translateY(-50%)";
-            });
+            inn.style.transform=up?"translate3d(0,0,0)":"translate3d(0,-"+heightPx+"px,0)";
           });
-        })(inner,sali);
+        })(inner,sali,h);
       }
       el.appendChild(wrap);
     }
   }
+
   var scEl=document.getElementById("subcount");
   var sfEl=document.getElementById("subfullcount");
   var sf=document.getElementById("subfull");
@@ -596,6 +629,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     ISCRITTI=n;
   }
   function poll(){
+    if(document.hidden)return;
     fetch(SCRIPT_URL,{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("Risposta non valida");return r.json();}).then(function(d){
       if(d&&typeof d.subscribers==="number"&&Number.isFinite(d.subscribers)){aggiorna(d.subscribers);}
     }).catch(function(){
@@ -689,7 +723,17 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   if(subClose){
     subClose.addEventListener("click",function(){sf.hidden=true;});
   }
-  document.addEventListener("keydown",function(e){if(e.key==="Escape")sf.hidden=true;});
+  sf.addEventListener("click",function(e){if(e.target===sf)sf.hidden=true;});
+
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Escape"){
+      sf.hidden=true;
+      document.getElementById("modal").hidden=true;
+      document.getElementById("infoModal").hidden=true;
+      document.getElementById("filterModal").hidden=true;
+      document.getElementById("tinfo").hidden=true;
+    }
+  });
 })();
 </script>
 <script>
@@ -705,9 +749,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     studio:{n:"Roblox Studio",d:"Il programma gratuito con cui chiunque può creare giochi su Roblox. Funziona su PC e Mac e permette di costruire mondi 3D, aggiungere script e pubblicare le proprie esperienze sulla piattaforma. È lo strumento principale di tutti i creator Roblox."},
     lua:{n:"Luau",d:"Roblox Studio usa Luau, un linguaggio derivato da Lua e adattato da Roblox per creare la logica delle esperienze."},
     brookhaven:{n:"Brookhaven 🏡RP",d:"Un gioco di ruolo (roleplay) su Roblox dove i giocatori possono vivere una vita virtuale: scegliere una casa, un lavoro, guidare auto e interagire con gli altri. È uno dei giochi di Roblox con più visite di sempre."},
-    bloxfruits:{n:"Blox Fruits",d:"Un gioco di avventura su Roblox ispirato all'anime One Piece. I giocatori combattono nemici, acquisiscono poteri speciali mangiando frutti e esplorano un vasto mondo. È uno dei giochi più popolari della piattaforma con miliardi di visite."},
-    towerofhell:{n:"Tower of Hell",d:"Un gioco di abilità estrema (obbystacle course) su Roblox. I giocatori devono scalare una torre generata casualmente, evitando ostacoli senza checkpoint. È noto per la sua difficoltà elevata e ha una community molto appassionata."},
-    kofi:{n:"Ko-fi",d:"Ko-fi è una piattaforma che permette ai creator di ricevere supporto economico dai fan. Si può donare una volta sola o iscriversi con un abbonamento mensile. Non serve un account per donare: basta una carta o PayPal."}
+    bloxfruits:{n:"Blox Fruits",d:"Un gioco di avventura su Roblox ispirato all'anime One Piece. I giocatori combattono nemici, acquisiscono poteri speciali mangiando frutti e esplorano un vasto mondo. È uno dei giochi più popolari della piattaforma con miliardi di visite."}
   };
   var panel=document.getElementById("tinfo"),tname=document.getElementById("tname"),tdesc=document.getElementById("tdesc");
   function openTerm(key){
@@ -727,14 +769,11 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   if(panel){
     panel.addEventListener("click",function(e){if(e.target===panel)closeTerm();});
   }
-  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeTerm();});
 })();
 </script>
 <script>
-/* Logica Mini-Quiz su Roblox (10 domande per difficoltà, mescolate ad ogni avvio) */
 (function(){
   var questions=[
-    // FACILE (10 domande)
     {
       q:"In che anno è uscito ufficialmente Roblox al pubblico?",
       opts:["2004","2006","2009","2012"],
@@ -805,8 +844,6 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
       diff:"facile",
       info:"Esatto! Gli Avatar sono i personaggi che i giocatori possono vestire e personalizzare."
     },
-
-    // MEDIO (10 domande)
     {
       q:"Qual era il nome originale di Roblox nel 2004?",
       opts:["BlockWorld","RoboCraft","DynaBlocks","BrickSim"],
@@ -877,8 +914,6 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
       diff:"medio",
       info:"Esatto! Interactive Physics fu il software di simulazione da cui nacque l'ispirazione per Roblox."
     },
-
-    // DIFFICILE (10 domande)
     {
       q:"In quale città della California si trova la sede principale di Roblox?",
       opts:["Los Angeles","San Mateo","San Diego","Sacramento"],
@@ -1100,7 +1135,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
         });
         if(chosen===item.ans){
           score++;
-          fb.style.color="#1fa855";
+          fb.style.color="#178a44";
           fb.textContent="✅ "+item.info;
         }else{
           b.classList.add("no");
@@ -1122,7 +1157,6 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 })();
 </script>
 <script>
-/* Logica Promo Codes: Accumulo di 10 codici a mezzanotte, Ricerca & Filtri */
 (function(){
   var ALL_CODES = [
     {code:"DIY",title:"Kinetic Staff",world:"Island of Move",category:"accessory",
@@ -1305,7 +1339,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     var now = new Date();
     var localMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
     var dayIndex = Math.floor(localMidnight / (1000 * 60 * 60 * 24));
-    var anchorDate = new Date(2026, 10, 22).getTime();
+    var anchorDate = new Date(2025, 0, 1).getTime();
     var anchorDayIndex = Math.floor(anchorDate / (1000 * 60 * 60 * 24));
     var diffDays = Math.max(0, dayIndex - anchorDayIndex);
     var count = Math.min(ALL_CODES.length, 10 + diffDays * 10);
@@ -1466,9 +1500,6 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
       if(e.target === fModal) fModal.hidden = true;
     });
   }
-  document.addEventListener("keydown", function(e){
-    if(e.key === "Escape" && fModal && !fModal.hidden) fModal.hidden = true;
-  });
 
   if(fApply){
     fApply.addEventListener("click", function(){
@@ -1486,7 +1517,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
       if(fType) fType.value = "";
       activeWorld = "";
       activeType = "";
-      updateTestUI = updateFilterButtonUI();
+      updateFilterButtonUI();
       renderCodes();
       if(fModal) fModal.hidden = true;
     });
